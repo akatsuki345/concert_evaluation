@@ -5,6 +5,7 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :revues, dependent: :destroy
   has_many :concerts, dependent: :destroy
+  has_many :comments, dependent: :destroy
   belongs_to :category
 
 
