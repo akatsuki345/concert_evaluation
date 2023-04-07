@@ -1,78 +1,23 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get 'order_details/update'
+    root to: "homes#top"
+    resources :order_details, only: [:update]
+    resources :orders, only: [:show, :update]
+    resources :comments, only: [:index, :show, :destroy]
+    resources :revues, only: [:index, :show, :destroy]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :concerts, only: [:index, :show, :destroy]
+    resources :categories, only: [:index, :create, :edit, :update]
   end
-  namespace :admin do
-    get 'orders/show'
-    get 'orders/update'
-  end
-  namespace :admin do
-    get 'comments/index'
-    get 'comments/show'
-    get 'comments/destroy'
-  end
-  namespace :admin do
-    get 'revues/index'
-    get 'revues/show'
-    get 'revues/destroy'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-  end
-  namespace :admin do
-    get 'concerts/index'
-    get 'concerts/show'
-    get 'concerts/destroy'
-  end
-  namespace :admin do
-    get 'categories/index'
-    get 'categories/create'
-    get 'categories/edit'
-    get 'categories/update'
-  end
-  namespace :admin do
-    get 'home/top'
-  end
+
   namespace :public do
-    get 'revues/index'
-    get 'revues/edit'
-    get 'revues/create'
-    get 'revues/update'
-    get 'revues/destroy'
-  end
-  namespace :public do
-    get 'comments/index'
-    get 'comments/edit'
-    get 'comments/create'
-    get 'comments/update'
-    get 'comments/destroy'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/comfirm'
-    get 'orders/complete'
-    get 'orders/create'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'cart_items/index'
-    get 'cart_items/update'
-    get 'cart_items/destroy'
-    get 'cart_items/destroy_all'
-    get 'cart_items/create'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-    get 'customers/unsubscribe'
-    get 'customers/withdraw'
-  end
+    resources :revues, only: [:index, :edit, :create, :update, :destroy]
+    resources :comments, only: [:index, :edit, :create, :update, :destroy]
+    resources :orders, only: [:new, :comfirm, :complete, :create, :index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+
   namespace :public do
     get 'concerts/index'
     get 'concerts/show'
