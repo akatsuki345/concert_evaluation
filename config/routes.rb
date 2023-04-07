@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    root to: "homes#top"
+    root to: "home#top"
     resources :order_details, only: [:update]
     resources :orders, only: [:show, :update]
     resources :comments, only: [:index, :show, :destroy]
@@ -12,26 +12,16 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
+    root to: "home#top"
+    get "/home/public/about" => "home#about", as: "about"
     resources :revues, only: [:index, :edit, :create, :update, :destroy]
     resources :comments, only: [:index, :edit, :create, :update, :destroy]
     resources :orders, only: [:new, :comfirm, :complete, :create, :index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+    resources :concerts, only: [:index, :show, :new, :create, :confirm, :complete, :edit, :update]
+  end
 
-  namespace :public do
-    get 'concerts/index'
-    get 'concerts/show'
-    get 'concerts/new'
-    get 'concerts/create'
-    get 'concerts/confirm'
-    get 'concerts/complete'
-    get 'concerts/edit'
-    get 'concerts/update'
-  end
-  namespace :public do
-    get 'home/top'
-    get 'home/about'
-  end
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
