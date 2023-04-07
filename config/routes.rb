@@ -1,5 +1,42 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'order_details/update'
+  end
+  namespace :admin do
+    get 'orders/show'
+    get 'orders/update'
+  end
+  namespace :admin do
+    get 'comments/index'
+    get 'comments/show'
+    get 'comments/destroy'
+  end
+  namespace :admin do
+    get 'revues/index'
+    get 'revues/show'
+    get 'revues/destroy'
+  end
+  namespace :admin do
+    get 'customers/index'
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/update'
+  end
+  namespace :admin do
+    get 'concerts/index'
+    get 'concerts/show'
+    get 'concerts/destroy'
+  end
+  namespace :admin do
+    get 'categories/index'
+    get 'categories/create'
+    get 'categories/edit'
+    get 'categories/update'
+  end
+  namespace :admin do
+    get 'home/top'
+  end
   namespace :public do
     get 'revues/index'
     get 'revues/edit'
