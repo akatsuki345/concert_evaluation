@@ -1,2 +1,43 @@
-<h1>Admin::Revues#show</h1>
-<p>Find me in app/views/admin/revues/show.html.erb</p>
+<div class="review_show">
+  <div class="low">
+    <div class="review_title">レビュー詳細</div>
+    <div class="col-xs-3">
+      <%= render 'users/info', user: @user %>
+    </div>
+    <div class="col-xs-8 col-xs-offset-1">
+      <table class="table table-hover table-inverse">
+        <div class="col-xs-4">
+        <tr>
+          <td class="info">本のタイトル</td>
+          <td><%= @review.book.name %></td>
+        </tr>
+        </div>
+        <tr>
+          <td class="info">レビュータイトル</td>
+          <td><%= @review.title %></td>
+        </tr>
+      </table>
+      <h4>レビュー本文</h4>
+      <div>
+        <%= @review.text %>
+      </div>
+    </div>
+  </div>
+  <div class="low">
+    <div class="col-xs-12">
+      <div class="col-xs-1 col-xs-offset-4">
+        <%= link_to "本の詳細に戻る", book_path(@book),class: "btn btn-primary btn-sm" %>
+      </div>
+      <div class="col-xs-1 col-xs-offset-1">
+        <% if @review.user_id == current_user.id %>
+        <%= link_to "編集", edit_book_review_path(@book, @review),class: "btn btn-primary btn-sm" %>
+        <% end %>
+      </div>
+      <div class="col-xs-1 col-xs-offset-4">
+        <% if @review.user_id == current_user.id %>
+        <%= link_to "削除", book_review_path(@book), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-danger btn-sm" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
