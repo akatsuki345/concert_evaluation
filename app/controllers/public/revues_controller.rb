@@ -6,6 +6,7 @@ class Public::RevuesController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
   def create
