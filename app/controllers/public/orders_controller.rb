@@ -59,8 +59,6 @@ class Public::OrdersController < ApplicationController
         :postal_code,
         :address,
         :name,
-        # 送料
-        :shipping_cost,
         # 請求額
         :total_payment,
         # 支払い方法
