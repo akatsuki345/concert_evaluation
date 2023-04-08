@@ -12,8 +12,9 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :create, :edit, :update]
   end
 
+  root to: "public/home#top"
+
   namespace :public do
-    root to: "home#top"
     get "/home/public/about" => "home#about", as: "about"
     resources :revues, only: [:index, :edit, :create, :update, :destroy] do
       resources :comments, only: [:index, :edit, :create, :update, :destroy]

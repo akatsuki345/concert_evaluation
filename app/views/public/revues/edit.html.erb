@@ -1,8 +1,8 @@
 <div class="low">
-  <% if @review.errors.any? %>
-    <h3><font color="red"><%= @review.errors.count %>点の記入漏れがあります</font></h3><!--エラーメッセ-->
+  <% if @revue.errors.any? %>
+    <h3><font color="red"><%= @revue.errors.count %>点の記入漏れがあります</font></h3><!--エラーメッセ-->
     <ul>
-      <% @review.errors.full_messages.each do |message| %>
+      <% @revue.errors.full_messages.each do |message| %>
       <li><font color="red"><%= message %></font></li>
       <% end %>
     </ul>
@@ -10,7 +10,7 @@
   <div class="review_edit">レビュー編集ページ</div><br>
   <div class="col-xs-11">
   <div class="review">
-    <%= form_for(@review, url: book_review_path) do |r| %>
+    <%= form_for(@revue, url: concert_revue_path) do |r| %>
     <table class="table table-bordered table-hover">
       <tr>
         <th class="info"><%= r.label :タイトル %></th>
