@@ -3,9 +3,9 @@
     <div class="col-md-10 col-sm-12 mx-6 mx-sm-auto px-auto">
       <div class="row d-flex justify-content-center mb-4">
 
-        <h3 class="col-6"><span>商品編集</span></h3>
+        <h3 class="col-6"><span>コンサート情報編集</span></h3>
 
-        <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch, local:true, class: "container text-center pl-9" do |f| %>
+        <%= form_with model: @concert, url: public_concert_path(@item.id), method: :patch, local:true, class: "container text-center pl-9" do |f| %>
         <div class="form-group row">
           <label class="col-4 text-right">商品画像</label>
           <%= f.file_field :image, class: "col-4 form-control-file pl-0", accept: "image/*" %>
