@@ -1,2 +1,34 @@
-<h1>Public::Concerts#index</h1>
-<p>Find me in app/views/public/concerts/index.html.erb</p>
+<div class="container" id="item-warpper">
+  <div class="row">
+    <div class="col-sm-2", style="margin-left: -150px;">
+      <%= render 'public/tmp/genre_list', genres: @genres %>
+    </div>
+    <div class="col offset-md-1">
+      <div style="display: flex; align-items: flex-end;">
+        <h2 style="margin-right: 10px;">商品一覧</h2>
+        <p>（全<%= @items.count %>件）</p>
+      </div>
+      <div class="d-md-flex flex-wrap">
+        <% @items.each do |item|%>
+          <div class="card m-2 text-center card-warpper">
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_image, size:'230x160', class:"card-image-top" %>
+              <% unless item.is_active %>
+                <div class="not-sale">
+                  <p>販売停止</p>
+                </div>
+              <% end %>
+              <div class="card-body text-dark py-2 font-weight-bold ">
+                <%= link_to item.name, item_path(item.id), class: "card-title mb-2" %>
+                <p class="card-subtitle"><%= to_total_currency(item.add_tax_price) %></p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div id="paginate-warpper" class="text-center">
+        <%= paginate @items %>
+      </div>
+    </div>
+  </div>
+</div>

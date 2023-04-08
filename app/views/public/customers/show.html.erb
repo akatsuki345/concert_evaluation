@@ -1,2 +1,65 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-10 mx-sm-auto text-center shadow-lg">
+        <h2>登録情報</h2>
+        <table class="table table-bordered border-primary">
+            <tr>
+                <td class="table-active">名前</td>
+                <td>
+                    <%= @customer.last_name %> <%= @customer.first_name %>
+                </td>
+           </tr>
+           <tr>
+               <td class="table-active">フリガナ</td>
+               <td>
+                   <%= @customer.last_name_kana %> <%= @customer.first_name_kana %>
+                </td>
+           </tr>
+           <tr>
+               <td class="table-active">メールアドレス</td>
+               <td>
+                   <%= @customer.email %>
+                </td>
+           </tr>
+           <tr>
+               <td class="table-active">郵便番号</td>
+               <td>
+                   <%= @customer.postal_code %>
+                </td>
+           </tr>
+           <tr>
+               <td class="table-active">住所</td>
+               <td>
+                   <%= @customer.address %>
+                </td>
+           </tr>
+           <tr>
+               <td class="table-active">電話番号</td>
+               <td>
+                   <%= @customer.telephone_number %>
+                </td>
+           </tr>
+          </table>
+          <div class="mt-10 offset-md-8">
+              <%= link_to "編集する",  edit_customer_path(@customer), class: 'btn btn-success' %>
+          </div>
+
+          <div class="row no-gutters">
+              <div class="col-lg-4">
+                  <h3>配送先</h3>
+             </div>
+             <div class="col-lg-2">
+                 <%= link_to "一覧を見る",    addresses_path, class: 'btn btn-primary' %>
+             </div>
+          </div>
+          <div class="row no-gutters">
+              <div class="col-lg-4">
+                  <h3 >注文履歴</h3>
+             </div>
+             <div class="col-lg-2">
+                 <%= link_to "一覧を見る",  orders_path, class: 'btn btn-primary' %>
+             </div>
+          </div>
+        </div>
+    </div>
+</div>
