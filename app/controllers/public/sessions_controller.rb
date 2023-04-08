@@ -14,7 +14,7 @@ class Public::SessionsController < Devise::SessionsController
   private
 
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :telphone_number, :is_deleted)
+    params.require(:customer).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :email, :postal_code, :address, :telphone_number, :is_deleted)
   end
   protected
 # 退会しているかを判断するメソッド
