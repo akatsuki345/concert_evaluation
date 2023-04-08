@@ -10,7 +10,7 @@
   <div class="review_edit">レビュー編集ページ</div><br>
   <div class="col-xs-11">
   <div class="review">
-    <%= form_for(@revue, url: concert_revue_path) do |r| %>
+    <%= form_for(@revue, url: public_concert_revue_path) do |r| %>
     <table class="table table-bordered table-hover">
       <tr>
         <th class="info"><%= r.label :タイトル %></th>

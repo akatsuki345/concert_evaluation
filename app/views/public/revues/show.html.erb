@@ -2,14 +2,14 @@
   <div class="low">
     <div class="review_title">レビュー詳細</div>
     <div class="col-xs-3">
-      <%= render 'users/info', user: @user %>
+      <%= render 'customer/info', customer: @customer %>
     </div>
     <div class="col-xs-8 col-xs-offset-1">
       <table class="table table-hover table-inverse">
         <div class="col-xs-4">
         <tr>
           <td class="info">コンサート名</td>
-          <td><%= @revue.book.name %></td>
+          <td><%= @revue.concert.name %></td>
         </tr>
         </div>
         <tr>
@@ -27,12 +27,12 @@
     <div class="col-xs-12">
       <div class="col-xs-1 col-xs-offset-1">
         <% if @revue.customer_id == current_user.id %>
-        <%= link_to "編集", edit_book_review_path(@book, @review),class: "btn btn-primary btn-sm" %>
+        <%= link_to "編集", edit_public_revue_path(@concert, @revue),class: "btn btn-primary btn-sm" %>
         <% end %>
       </div>
       <div class="col-xs-1 col-xs-offset-4">
-        <% if @review.user_id == current_user.id %>
-        <%= link_to "削除", book_review_path(@book), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-danger btn-sm" %>
+        <% if @revue.customer_id == current_user.id %>
+        <%= link_to "削除", public_concert_revue(@concert), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-danger btn-sm" %>
         <% end %>
       </div>
     </div>
@@ -40,10 +40,10 @@
   <div>
     <p>コメント件数：<%= @revue.comments.count %></p>
     <% @revue.comments.each do |comment| %>
-      <%= comment.user.name %>
+      <%= comment.customer.name %>
       <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-      <% if post_comment.user == current_user %>
-        <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete %>
+      <% if comment.customer == current_user %>
+        <%= link_to "削除", public_concert_comment(@concert), method: :delete %>
       <% end %>
     <% end %>
   </div>

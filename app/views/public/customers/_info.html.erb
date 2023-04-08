@@ -1,0 +1,16 @@
+<div class="name">
+    <table class="table">
+        <tr><%= attachment_image_tag(user, :image, format: 'jpeg',
+        class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size:'100x100') %>
+        </tr>
+        <tr>
+          <th class="info">ユーザー名</th>
+          <th><%= customer.name %></th>
+        </tr>
+
+        <tr>
+          <th class="info">自己紹介</th>
+          <th><%= customer.introduction %></th>
+        </tr>
+    </table>
+</div>
