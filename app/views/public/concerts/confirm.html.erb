@@ -58,16 +58,16 @@
     <!--　       〒<%= @order.add_full_address %><br/>-->
     <!--        <%= @order.name %>-->
     <!--</div>-->
-    
+
     <div class='text-center mb-2'>
-        <%= form_with model: @order, url:orders_path,method: :post do |f|%>
-            <%= f.hidden_field :postal_code %>
-            <%= f.hidden_field :address %>
-            <%= f.hidden_field :name %>
-            <%= f.hidden_field :shipping_cost %>
-            <%= f.hidden_field :total_payment,:value => @total+@order.shipping_cost %>
-            <%= f.hidden_field :payment_method %>
-            <%= f.submit "注文を確定する", class: 'btn btn-success' %>
+        <%= form_with model: @concert, url:concerts_path,method: :post do |f|%>
+            <!--<%= f.hidden_field :postal_code %>-->
+            <!--<%= f.hidden_field :address %>-->
+            <!--<%= f.hidden_field :name %>-->
+            <!--<%= f.hidden_field :shipping_cost %>-->
+            <!--<%= f.hidden_field :total_payment,:value => @total+@order.shipping_cost %>-->
+            <!--<%= f.hidden_field :payment_method %>-->
+            <%= f.submit "コンサート情報を登録する", class: 'btn btn-success' %>
         <% end %>
     </div>
 </div>
