@@ -1,35 +1,35 @@
 <div class="container" id="item-warpper">
   <div class="row">
     <div class="col-sm-2">
-      <%= render 'public/tmp/genre_list', genres: @genres %>
+      <%= render 'public/tmp/category_list', categories: @categories %>
     </div>
     <div class="col-md-8"  style="margin-top: 50px;">
       <div class="d-flex" style="margin-left: 50px;">
-        <%= image_tag @item.get_image, size:'300x200' %>
+        <%= image_tag @concert.get_image, size:'300x200' %>
         <div class="ml-4 pl-4">
-          <h3 class="font-weight-bold mb-3" style="margin-left: 50px;"><%= @item.name%></h3>
+          <h3 class="font-weight-bold mb-3" style="margin-left: 50px;"><%= @concert.name%></h3>
           <div class="d-flex flex-column justify-content-between h-75">
             <p class="h5 mb-4" style="margin-left: 50px;">
-              <%= @item.introduction %>
+              <%= @concert.introduction %>
             </p>
             <p class="h4 mb-4" style="margin-left: 50px;">
               <strong>
-                <%= to_total_currency(@item.add_tax_price) %>
+                <%= to_total_currency(@concert.add_tax_price) %>
               </strong>
               <small>(税込)</small>
             </p>
           </div>
         </div>
       </div>
-      <% if @item.is_active %>
+      <% if @concert.is_active %>
         <% if current_customer %>
         <div class="w-50 mt-4 ml-auto text-right">
-          <%= render 'public/tmp/amount', cart:@cart, item:@item %>
+          <%= render 'public/tmp/sheet', cart:@cart, concert:@concert %>
         </div>
         <% end %>
       <% else %>
       <div class="text-right">
-        <span class="btn btn-sm btn-secondary">販売停止</span>
+        <span class="btn btn-sm btn-secondary">受付終了</span>
       </div>
       <% end %>
     </div>
