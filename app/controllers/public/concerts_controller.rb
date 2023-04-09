@@ -23,7 +23,7 @@ class Public::ConcertsController < ApplicationController
   end
 
   def create
-    @concert = Concert.new(public_params)
+       @concert = Concert.new(public_params)
          if @concert.save
             redirect_to public_concert_path(@concert), notice: "You have created concert successfully."
          else
@@ -43,7 +43,7 @@ class Public::ConcertsController < ApplicationController
   end
 
   def update
-     @concert = Concert.find(params[:id])
+        @concert = Concert.find(params[:id])
         if @concert.update(public_params)
             redirect_to public_concert_path(@concert), notice: "You have updated concert successfully."
         else

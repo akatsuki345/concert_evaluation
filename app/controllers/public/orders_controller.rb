@@ -1,6 +1,8 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
+    @addresses = current_customer.addresses
+    @address = Address.new
   end
 
   def comfirm
@@ -8,6 +10,7 @@ class Public::OrdersController < ApplicationController
     @total = @carts.inject(0) {|sum, cart| sum + cart.add_total_payment_all}
     @order = current_customer.orders.new(order_params)
     #送料の定義
+    @order.shipping_cost = 800
     @order.total_payment = @total
     select_destination(params[:order][:option])
     @order.status = 0
@@ -57,6 +60,8 @@ class Public::OrdersController < ApplicationController
         :postal_code,
         :address,
         :name,
+        # 送料
+        :shipping_cost,
         # 請求額
         :total_payment,
         # 支払い方法
