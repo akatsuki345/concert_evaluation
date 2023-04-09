@@ -1,0 +1,49 @@
+<div class="container px-5 px-sm-0">
+ <div class="row">
+  <div class="mt-5">
+      <% if @address.errors.any? %>
+      <%= @address.errors.count %>件のエラーが発生しました。:
+      <ul>
+       <% @address.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+       <% end %>
+      </ul>
+      <% end %>
+    </div>
+ </div>
+
+ <div class="row">
+  <div class="offset-md-4 mt-4">
+   <h2><span class="bg-secondary">配送先登録/一覧</span></h2>
+  </div>
+ </div>
+
+ <div class="row">
+  <div class="mt-5 mb-5">
+   <%= render 'new', address: @address %>
+  </div>
+ </div>
+
+ <div class="row">
+  <table class="table table-bordered border-dark">
+   <tr>
+    <td class="table-active">郵便番号</td>
+    <td class="table-active">住所</td>
+    <td class="table-active">宛名</td>
+    <td class="table-active"></td>
+   </tr>
+
+   <% @addresses.each do |address| %>
+   <tr>
+    <td><%= address.postal_code %></td>
+    <td><%= address.address %></td>
+    <td><%= address.name %></td>
+    <td>
+     <%= link_to "編集する", edit_address_path(address), class: 'btn btn-sm btn-success' %>
+     <%= link_to "削除する", address_path(address.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: 'btn btn-sm btn-danger' %>
+    </td>
+   </tr>
+   <% end %>
+  </table>
+ </div>
+</div>

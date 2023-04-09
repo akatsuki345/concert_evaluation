@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :comfirm, :complete, :create, :index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+    resources :addresses, only: [:index, :new, :edit, :create, :update, :destroy]
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
