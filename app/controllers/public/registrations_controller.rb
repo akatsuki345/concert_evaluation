@@ -8,14 +8,14 @@ class Public::RegistrationsController < Devise::RegistrationsController
     customer_path
   end
 
-  def new
+  #def new
 
-  end
+  #end
 
 
-  def create
+  #def create
 
-  end
+  #end
 
 
   def comfirm
