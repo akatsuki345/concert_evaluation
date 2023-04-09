@@ -3,7 +3,7 @@
     <div class="col-md-9 mx-sm-auto text-center shadow-lg">
         <h2>会員情報編集</h2>
 
-        <%= form_with model: @customer, url: customer_update_path(current_customer), method: :patch do |f| %>
+        <%= form_with model: @customer, url: public_customer_path(current_customer), method: :patch do |f| %>
 
         <table>
             <tr>

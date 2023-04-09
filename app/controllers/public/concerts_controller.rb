@@ -1,6 +1,6 @@
 class Public::ConcertsController < ApplicationController
   before_action :set_categories
-  before_action :authenticate_public!
+  before_action :authenticate_customer!
 
 
   def index
