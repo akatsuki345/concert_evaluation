@@ -63,6 +63,13 @@
            </tr>
 
            <tr>
+             <td></td>
+             <td>
+               <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "選択してください"}, class: 'form-control' %>
+             </td>
+           </tr>
+
+           <tr>
              <td><%= f.label "パスワード(6文字以上)" %>
              <td><%= f.password_field :password %></td>
              </td>
