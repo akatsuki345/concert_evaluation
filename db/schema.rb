@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_09_081835) do
+ActiveRecord::Schema.define(version: 2023_04_09_094847) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -50,17 +50,6 @@ ActiveRecord::Schema.define(version: 2023_04_09_081835) do
   end
 
   create_table "admins", force: :cascade do |t|
-    t.boolean "is_deleted", default: false, null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.string "first_name_kana"
-    t.string "last_name_kana"
-    t.string "nickname"
-    t.string "postal_code"
-    t.string "address"
-    t.string "telephone_number"
-    t.integer "category_id"
-    t.text "introduction"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
