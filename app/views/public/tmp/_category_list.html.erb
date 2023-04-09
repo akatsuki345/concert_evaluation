@@ -1,0 +1,10 @@
+<div class="category-list" id="category-list">
+<h5 class="border-bottom p-1 text-center border-dark">カテゴリー検索</h5>
+  <ul class="list-unstyled ml-3">
+    <li class="my-3 text-center"><%= link_to 'すべて', public_concerts_path, class:"text-dark" %></li>
+    <% categories.each do |category|%>
+      <li class="my-3 text-center"><%= link_to category.name, public_concerts_path(category_id: category.id,category_name:category.name),
+      class:"text-dark" %></li>
+    <% end %>
+  </ul>
+</div>
