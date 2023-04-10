@@ -11,20 +11,6 @@ class Admin::SessionsController < Devise::SessionsController
     new_admin_session_path
   end
 
-  def new
-
-  end
-
-
-  def create
-
-  end
-
-
-  def destroy
-
-  end
-
   # GET /resource/sign_in
   # def new
   #   super
