@@ -20,16 +20,17 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :telephone_number, presence: true
   validates :email, presence: true
-  validates :encrypted_password, presence: true
+  #validates :encrypted_password, presence: true
 
   def add_full_name
     "#{self.first_name} #{self.last_name}"
   end
 
   def self.guest
-    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |customer|
+    find_or_create_by!(first_name: '太郎' ,last_name: 'guest' ,first_name_kana: 'タロウ' ,last_name_kana: 'ゲスト' ,
+                      postal_code: '0000000000' ,address: '東京都' ,telephone_number: '0000000000' ,email: 'guest@example.com' ,category_id: "5") do |customer|
       customer.password = SecureRandom.urlsafe_base64
-      customer.name = "guestuser"
+      #customer.name = "guestuser"
     end
   end
 

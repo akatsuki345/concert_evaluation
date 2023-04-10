@@ -23,23 +23,29 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :comfirm, :complete, :create, :index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :create]
     delete "cart_items/destroy_all", to: "cart_items#destroy_all", as: "destroy_all"
-    resources :customers, only: [:show, :edit, :update]
-    get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-    patch 'customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+    resources :customers, only: [:show, :edit, :update] do
+      collection do
+        get 'unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+        patch 'withdraw' => 'customers#withdraw', as: 'withdraw'
+      end
+    end
+
     resources :addresses, only: [:index, :new, :edit, :create, :update, :destroy]
   end
 
-  devise_scope :public do
-    post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  devise_for :customers, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+
+  devise_scope :customer do
+    post 'public/guest_sign_in' => 'public/sessions#guest_sign_in'
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-}
+    sessions: "admin/sessions"
+  }
 
-  devise_for :customers,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
