@@ -21,7 +21,8 @@ Rails.application.routes.draw do
       resources :comments, only: [:index, :edit, :create, :update, :destroy]
     end
     resources :orders, only: [:new, :comfirm, :complete, :create, :index, :show]
-    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    delete "cart_items/destroy_all", to: "cart_items#destroy_all", as: "destroy_all"
     resources :customers, only: [:show, :edit, :update]
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch 'customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
@@ -36,5 +37,8 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
