@@ -13,13 +13,14 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(current_customer.id)
     if @customer.update(customer_params)
      flash[:notice] = "変更を保存しました。"
-     redirect_to customer_path(current_customer.id)
+     redirect_to public_unsubscribe_path(current_customer.id)
     else
      render :edit
     end
   end
 
   def unsubscribe
+    @customer = Customer.find(current_customer.id)
   end
 
   def withdraw

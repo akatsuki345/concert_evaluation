@@ -22,7 +22,9 @@ Rails.application.routes.draw do
     end
     resources :orders, only: [:new, :comfirm, :complete, :create, :index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
-    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+    resources :customers, only: [:show, :edit, :update]
+    get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch 'customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     resources :addresses, only: [:index, :new, :edit, :create, :update, :destroy]
   end
 
