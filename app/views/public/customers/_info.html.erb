@@ -13,9 +13,9 @@
           <th><%= customer.introduction %></th>
         </tr>
     </table>
-    <% if user.name != "guestuser" %>
+    <% if customer.name != "guestuser" %>
     <div class='row'>
-     <%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
+     <%= link_to '',edit_public_customer_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{customer.id}" %>
     </div>
     <% end %>
 </div>

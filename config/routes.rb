@@ -29,6 +29,10 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :new, :edit, :create, :update, :destroy]
   end
 
+  devise_scope :public do
+    post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
@@ -37,8 +41,5 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-  devise_scope :user do
-    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
-  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
