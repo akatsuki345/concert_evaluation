@@ -13,9 +13,7 @@
               <%= @concert.introduction %>
             </p>
             <p class="h4 mb-4" style="margin-left: 50px;">
-              <strong>
-                <%= to_total_currency(@concert.add_tax_price) %>
-              </strong>
+              <%= @concert.add_tax_price.to_s(:delimited) %>（<%= @concert.price.to_s(:delimited) %>）円
               <small>(税込)</small>
             </p>
           </div>
