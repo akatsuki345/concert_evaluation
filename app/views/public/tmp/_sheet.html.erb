@@ -1,6 +1,6 @@
 <%= form_with model:cart, url: public_cart_items_path do |f| %>
     <%= f.select :sheet, [*1..10],{include_blank: '枚数選択'},
-    {class: "w-50 d-inline form-control needs-validation", required: true} %>個
+    {class: "w-50 d-inline form-control needs-validation", required: true} %>枚
     <%= f.hidden_field :concert_id, :value => concert.id %>
     <%= f.submit "カートを追加", class: "ml-2 btn btn-success"%>
 <% end %>
