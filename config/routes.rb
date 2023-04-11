@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     root to: "home#top"
     resources :order_details, only: [:update]
     resources :orders, only: [:show, :update]
-    resources :concerts, only: [:index, :show, :destroy] do
+    resources :concerts, only: [:index, :show, :destroy, :new, :create, :confirm, :complete, :edit, :update] do
      resources :revues, only: [:index, :show, :destroy]
       resources :comments, only: [:index, :show, :destroy]
     end
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   namespace :public do
     get "/home/public/about" => "home#about", as: "about"
-    resources :concerts, only: [:index, :show, :new, :create, :confirm, :complete, :edit, :update] do
+    resources :concerts, only: [:index, :show] do
      resources :revues, only: [:index, :edit, :create, :update, :destroy]
       resources :comments, only: [:index, :edit, :create, :update, :destroy]
     end
