@@ -25,9 +25,8 @@
           <tr>
             <% @concerts.each do |concert| %>
               <td>
-                <%= link_to(image_tag(concert.get_image, size: '230x150', class: 'card-image-top'), concert_path(concert.id)) %>
-                <%= link_to concert.name, concert_path(concert.id) %></br>
-                <%= to_total_currency(concert.add_tax_price) %>
+                <%= link_to(image_tag(concert.get_image, size: '230x150', class: 'card-image-top'), public_concerts_path(concert.id)) %></br>
+                <%= link_to concert.name, public_concerts_path(concert.id) %>
               </td>
             <% end %>
           </tr>
