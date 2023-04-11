@@ -1,7 +1,7 @@
 class Concert < ApplicationRecord
 
   belongs_to :category
-  has_many :cart_items, dependent: :destroy
+  has_one :cart_item
   has_many :order_details
   has_many :revues, dependent: :destroy
 
@@ -18,9 +18,9 @@ class Concert < ApplicationRecord
     (image.attached?) ? image : 'no_image.jpg'
  end
 
-def add_tax_price
-  (price*1.1).floor
-end
+ def add_tax_price
+   (price*1.1).floor
+ end
 
 
 end

@@ -4,7 +4,6 @@ class CartItem < ApplicationRecord
   validates :sheet, presence: true
 
   def add_total_payment_all
-    tax = 1.1
-    (self.concert.price * tax).floor * self.sheet
+    concert.add_tax_price * sheet
   end
 end

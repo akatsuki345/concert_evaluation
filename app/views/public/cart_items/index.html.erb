@@ -19,20 +19,20 @@
         <% @carts.each do |cart| %>
       <tr>
         <td class="align-middle py-0">
-          <%= image_tag cart.item.get_image, size:'100x70' %>
-          <%= cart.item.name %>
+          <%= image_tag cart.concert.get_image, size:'100x70' %>
+          <%= cart.concert.name %>
         </td>
-        <td class="align-middle py-1"><%= cart.item.add_tax_price.to_s(:delimited) %>円</td>
+        <td class="align-middle py-1"><%= cart.concert.add_tax_price.to_s(:delimited) %>円</td>
         <td class="align-middle py-1">
           <div class="form-group mt-3">
-            <%= render 'public/tmp/sheet', cart:cart, concert:cart.item %>
+            <%= render 'public/tmp/sheet', cart:cart, concert:cart %>
           </div>
         </td>
         <td class="align-middle py-1">
           <%= cart.add_total_payment_all.to_s(:delimited) %>円
         </td>
         <td class="align-middle py-1">
-          <%= link_to '消去する', cart_item_path(cart.id), method: :delete,
+          <%= link_to '消去する', public_cart_item_path(cart.id), method: :delete,
           "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %>
         </td>
       </tr>
@@ -57,7 +57,7 @@
   </div>
   <di class="text-center d-block mt-4">
     <% if @carts.present?%>
-      <%= link_to '情報入力画面へ進む', new_order_path, class:"btn btn-sm btn-success" %>
+      <%= link_to '情報入力画面へ進む', new_public_order_path, class:"btn btn-sm btn-success" %>
     <% end %>
   </di>
 </div>

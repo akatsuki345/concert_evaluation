@@ -32,7 +32,7 @@ class Public::CartItemsController < ApplicationController
       cart_item = current_customer.cart_items.build(cart_params)
       cart_item.save
     end
-    redirect_to cart_items_path, notice:' 商品を追加しました'
+    redirect_to public_cart_items_path, notice:' 商品を追加しました'
   end
 
   private
