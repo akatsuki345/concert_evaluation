@@ -28,7 +28,7 @@
                 <dt class="col-4 mt-3"><%= f.label :category_id, "カテゴリー", class: "text-right" %></dt>
                 <dd class="col-8 mt-3"><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "--選択してください--" %></dd>
 
-                <dt class="col-4 mt-3"><%= f.label :price, "税抜価格", class: "text-right" %></dt>
+                <dt class="col-4 mt-3"><%= f.label :price, "チケット税抜価格", class: "text-right" %></dt>
                 <dd class="col-8 mt-3 input-group d-flex align-items-end"><%= f.text_field :price, class: "form-control price", placeholder: "1000" %>円</dd>
 
                 <dt class="col-4 mt-3"><label class="text-right">販売ステータス</label></dt>

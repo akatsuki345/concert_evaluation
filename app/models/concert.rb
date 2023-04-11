@@ -4,7 +4,6 @@ class Concert < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :order_details
   has_many :revues, dependent: :destroy
-  belongs_to :order
 
   scope :search_category, ->(category) {where(category_id: category)}
 
