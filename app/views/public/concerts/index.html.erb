@@ -11,7 +11,7 @@
       <div class="d-md-flex flex-wrap">
         <% @concerts.each do |concert|%>
           <div class="card m-2 text-center card-warpper">
-            <%= link_to concert_path(concert.id) do %>
+            <%= link_to public_concert_path(concert.id) do %>
               <%= image_tag concert.get_image, size:'230x160', class:"card-image-top" %>
               <% unless concert.is_active %>
                 <div class="not-sale">
@@ -19,7 +19,7 @@
                 </div>
               <% end %>
               <div class="card-body text-dark py-2 font-weight-bold ">
-                <%= link_to concert.name, concert_path(concert.id), class: "card-title mb-2" %>
+                <%= link_to concert.name, public_concert_path(concert.id), class: "card-title mb-2" %>
                 <p class="card-subtitle"><%= to_total_currency(concert.add_tax_price) %></p>
               </div>
             <% end %>
