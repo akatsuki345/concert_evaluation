@@ -20,7 +20,7 @@
               <% end %>
               <div class="card-body text-dark py-2 font-weight-bold ">
                 <%= link_to concert.name, public_concert_path(concert.id), class: "card-title mb-2" %>
-                <%= concert.add_tax_price.to_s(:delimited) %>（<%= concert.price.to_s(:delimited) %>）円
+                税込<%= concert.add_tax_price.to_s(:delimited) %>円
               </div>
             <% end %>
           </div>
