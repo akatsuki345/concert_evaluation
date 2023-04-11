@@ -3,7 +3,6 @@ class Public::ConcertsController < ApplicationController
 
 
   def index
-    @concert = Concert.find(params[:id])
     if params[:category_id].present?
       @concerts = Concert.search_category(params[:category_id]).page(params[:page]).per(8)
       @title = params[:category_name]
