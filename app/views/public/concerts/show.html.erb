@@ -33,3 +33,39 @@
     </div>
   </div>
 </div>
+
+<%# レビュー一覧表示%>
+<div class="col-xs-7">
+  <div class="concert_show_title">レビュー一覧</div>
+  <div class="concert_show">
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr class="info">
+        <th>ユーザー</th>
+        <th>レビュー</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reviews.each do |r| %>
+      <tr>
+        <td>
+          <%= link_to public_customer_path(r.customer.id) do %>
+            <%= attachment_image_tag(customer, :image, :fill, 70, 70,
+                format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg") %>
+            <%= r.customer.name%>
+          <% end %>
+        </td>
+        <td><%= link_to public_concert_review_path(r.concert, r) do %> <%# @bookでbook_idをrでreview_idを引数として持ってくる%>
+          <%= r.title %><% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+  <div class ="paginate">
+    <%= paginate @reviews, theme: 'custom_theme' %>
+  </div>
+  </div>
+</div>
+<%# レビュー一覧表示%>
