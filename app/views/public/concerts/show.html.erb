@@ -43,6 +43,7 @@
       <tr class="info">
         <th>ユーザー</th>
         <th>レビュー</th>
+        <th>コメント</th>
       </tr>
     </thead>
     <tbody>
@@ -58,27 +59,17 @@
         <td><%= link_to public_concert_revues_path(r.concert, r) do %> <%# @bookでbook_idをrでreview_idを引数として持ってくる%>
           <%= r.title %><% end %>
         </td>
+        <td><%= link_to "コメント", public_concert_comments_path(@concert.id) %></td>
       </tr>
       <% end %>
-      <tr class="info">
-        <td><%= link_to 'レビューを書く', edit_public_concert_revue_path %></td>
-      </tr>
-      <div>
-       <p>コメント件数：<%= @revue.comments.count %></p>
-        <% @revue.comments.each do |comment| %>
-       <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
-         <%= comment.customer.name %>
-         <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-        <% end %>
-      </div>
-      <div>
-       <%= form_with model: [@revue, @comment] do |f| %>
-        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-        <%= f.submit "送信する" %>
-       <% end %>
-      </div>
     </tbody>
   </table>
+  <div>
+  <%= form_with model: [@concert, @revue], url: public_concert_revues_path(@concert.id), method: :post do |f| %>
+    <%= f.text_area :impressions, rows: '5', placeholder: "レビューをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
   </div>
   <div class ="paginate">
     <%= paginate @revues %>

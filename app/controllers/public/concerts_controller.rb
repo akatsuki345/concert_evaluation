@@ -16,6 +16,7 @@ class Public::ConcertsController < ApplicationController
     @concert = Concert.find(params[:id])
     @cart = CartItem.new
     @revues = @concert.revues.page(params[:page]).per(8)
+    @revue = Revue.new
   end
 
   private
