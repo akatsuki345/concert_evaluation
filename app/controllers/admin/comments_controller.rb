@@ -1,6 +1,7 @@
 class Admin::CommentsController < ApplicationController
   def index
     @comment = Comment.page(params[:page])
+    @concert = Concert.find(params[:concert_id])
   end
 
   def show
