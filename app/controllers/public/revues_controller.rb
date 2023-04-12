@@ -22,7 +22,8 @@ class Public::RevuesController < ApplicationController
 
   def create
     concert = Concert.find(params[:concert_id])
-    revue = current_customer.revue.new(revue_params)
+    revue = Revue.new(revue_params)
+    revue.customer_id = current_customer.id
     revue.concert_id = concert.id
     revue.save
     redirect_to public_concert_path(concert)
@@ -48,6 +49,6 @@ class Public::RevuesController < ApplicationController
 
   private
     def revue_params
-      params.require(:revue).permit(:title, :text, :user_id, :concert_id)
+      params.require(:revue).permit(:impressions)
     end
 end

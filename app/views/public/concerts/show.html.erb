@@ -51,15 +51,15 @@
       <tr>
         <td>
           <%= link_to public_customer_path(r.customer.id) do %>
-            <%= attachment_image_tag(r.customer, :image, :fill, 70, 70,
+            <%#= attachment_image_tag(r.customer, :image, :fill, 70, 70,
                 format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg") %>
-            <%= r.customer.name%>
+            <%= r.customer.first_name%>
           <% end %>
         </td>
         <td><%= link_to public_concert_revues_path(r.concert, r) do %> <%# @bookでbook_idをrでreview_idを引数として持ってくる%>
-          <%= r.title %><% end %>
+          <%= r.impressions %><% end %>
         </td>
-        <td><%= link_to "コメント", public_concert_comments_path(@concert.id) %></td>
+        <td><%= link_to "コメント", public_concert_comments_path(concert_id: @concert.id, revue_id: r.id) %></td>
       </tr>
       <% end %>
     </tbody>

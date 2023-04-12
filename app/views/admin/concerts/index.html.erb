@@ -15,6 +15,7 @@
                     <th>税抜価格</th>
                     <th>カテゴリー</th>
                     <th>ステータス</th>
+                    <th>レビュー</th>
                     <th>コメント一覧</th>
                 </tr>
             </thead>
@@ -31,7 +32,8 @@
                         <% else %>
                         <strong class="text-muted">受付終了</strong>
                         <% end %>
-                        </td>
+                      </td>
+                      <td><%= link_to "レビュー", admin_concert_revues_path(concert)%></td>
                       <td><%= link_to "コメント", admin_concert_comments_path(concert)%></td>
                   </tr>
                       <% end %>
