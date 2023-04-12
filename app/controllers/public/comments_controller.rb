@@ -10,7 +10,7 @@ class Public::CommentsController < ApplicationController
     comment = current_customer.comments.new(comment_params)
     comment.revue_id = revue.id
     comment.save
-    redirect_to revue_path(revue)
+    redirect_to public_concert_path(concert)
   end
 
   def update

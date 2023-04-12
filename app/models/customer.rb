@@ -4,13 +4,14 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :concerts, dependent: :destroy
+  has_many :revues, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  belongs_to :category
   has_many :addresses, dependent: :destroy
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
-  has_many :revues, dependent: :destroy
-  has_many :concerts, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  belongs_to :category
+
 
   validates :first_name, presence: true
   validates :last_name, presence: true

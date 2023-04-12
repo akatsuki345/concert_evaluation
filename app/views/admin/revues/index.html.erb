@@ -3,36 +3,18 @@
     <div class="col-10">
       <h3><span class="bg-light bg-gradient">レビュー一覧</span></h3>
     </div>
-            <table class='table table-hover table-inverse'>
-              <thead>
-                <tr class="bg-light">
-                    <th>コンサートID</th>
-                    <th>コンサート名</th>
-                    <th>税抜価格</th>
-                    <th>カテゴリー</th>
-                    <th>ステータス</th>
-                    <th>レビュー</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @concert.each do |concert| %>
-                  <tr>
-                      <td><%= concert.id %></td>
-                      <td><%= link_to concert.name, admin_concert_path(concert.id)%></td>
-                      <td><%= concert.price %></td>
-                      <td><%= concert.category.name %></td>
-                      <td>
-                      <%if concert.is_active == true %>
-                        <strong class="text-success">販売中</strong>
-                        <% else %>
-                        <strong class="text-muted">受付終了</strong>
-                        <% end %>
-                        </td>
-                  </tr>
-                      <% end %>
-                </tbody>
-            </table>
-            <%= paginate @concert %>
-        </div>
-    </div>
+      <table class='table table-hover table-inverse'>
+        <div>
+         <% @concert.comments.each do |comment| %>
+          <p><%= image_tag comment.customer.get_profile_image(100,100) %></p>
+            <%= comment.customer.name %>
+            <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+            <% if comment.customer == current_customer %>
+             <%= link_to "削除", admin_concert_comment_path(comment.concert, comment), method: :delete %>
+            <% end %>
+         <% end %>
+       </div>
+      </table>
+         <%= paginate @concert.comment %>
+  </div>
 </div>

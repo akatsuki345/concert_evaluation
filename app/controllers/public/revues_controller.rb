@@ -12,6 +12,8 @@ class Public::RevuesController < ApplicationController
 
   def show
     @revue = Revue.find(params[:id])
+    @revue = Revue.new
+    @comment = Comment.new
     @concert = @revue.concert
     @customer = @revue.customer
     @search = Concert.ransack(params[:q])
@@ -19,6 +21,11 @@ class Public::RevuesController < ApplicationController
   end
 
   def create
+    concert = Concert.find(params[:concert_id])
+    revue = current_customer.revue.new(revue_params)
+    revue.concert_id = concert.id
+    revue.save
+    redirect_to public_concert_path(concert)
   end
 
   def update
