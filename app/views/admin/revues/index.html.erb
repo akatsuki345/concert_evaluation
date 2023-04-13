@@ -5,16 +5,14 @@
     </div>
       <table class='table table-hover table-inverse'>
         <div>
-         <% @concert.comments.each do |comment| %>
-          <p><%= image_tag comment.customer.get_profile_image(100,100) %></p>
-            <%= comment.customer.name %>
-            <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-            <% if comment.customer == current_customer %>
-             <%= link_to "削除", admin_concert_comment_path(comment.concert, comment), method: :delete %>
-            <% end %>
+         <% @concert.revues.each do |revue| %>
+          <%#= image_tag comment.customer.get_profile_image(100,100) %>
+            <%= revue.customer.first_name+revue.customer.last_name %>
+            <%= revue.created_at.strftime('%Y/%m/%d') %><%= revue.impressions %>
+            <%= link_to "削除", admin_concert_revue_path(revue.concert, revue), method: :delete %>
          <% end %>
        </div>
       </table>
-         <%= paginate @concert.comment %>
+         <%= paginate @revue %>
   </div>
 </div>

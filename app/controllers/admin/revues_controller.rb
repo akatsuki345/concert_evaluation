@@ -1,6 +1,7 @@
 class Admin::RevuesController < ApplicationController
   def index
     @revue = Revue.page(params[:page])
+    @concert = Concert.find(params[:concert_id])
   end
 
   def show
