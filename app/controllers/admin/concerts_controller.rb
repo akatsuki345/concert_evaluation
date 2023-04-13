@@ -3,6 +3,7 @@ class Admin::ConcertsController < ApplicationController
 
   def index
     @concert = Concert.page(params[:page])
+    @concerts = Concert.all
   end
 
   def new
@@ -27,8 +28,9 @@ class Admin::ConcertsController < ApplicationController
   end
 
   def update
-          @concert = Concert.find(params[:id])
+         @concert = Concert.find(params[:id])
       if @concert.update(admin_params)
+         @concert.save_tags(params[:concert][:tag])
         redirect_to admin_concert_path(@concert), notice: "You have updated item successfully."
       else
         render :edit
@@ -44,7 +46,7 @@ class Admin::ConcertsController < ApplicationController
   private
 
   def admin_params
-    params.require(:concert).permit(:image, :is_active, :name, :introduction, :category, :category_id, :price)
+    params.require(:concert).permit(:image, :is_active, :name, :introduction, :category, :category_id, :price, :content)
   end
 
 end

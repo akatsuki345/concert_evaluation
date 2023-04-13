@@ -8,6 +8,7 @@ Rails.application.routes.draw do
      resources :revues, only: [:index, :show, :destroy]
       resources :comments, only: [:index, :show, :destroy]
     end
+    
     resources :customers, only: [:index, :show, :edit, :update]
     resources :categories, only: [:index, :create, :edit, :update]
   end
