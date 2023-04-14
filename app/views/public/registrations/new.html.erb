@@ -28,6 +28,15 @@
 
         <tr>
           <td>
+            <p><%= f.label "ニックネーム/アーティスト名" %></p>
+          </td>
+          <td>
+            <p><%= f.text_field :nickname, autofocus: true, autocomplete: "nickname",placeholder: "ニックネーム" %></p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
             <p><%= f.label "メールアドレス" %></p>
           </td>
           <td>

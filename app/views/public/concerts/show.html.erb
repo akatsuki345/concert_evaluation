@@ -61,7 +61,7 @@
           <%= link_to public_customer_path(r.customer.id) do %>
             <%#= attachment_image_tag(r.customer, :image, :fill, 70, 70,
                 format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg") %>
-            <%= r.customer.first_name%>
+            <%= r.customer.nickname%>
           <% end %>
         </td>
         <td><%= link_to public_concert_revues_path(r.concert, r) do %> <%# @bookでbook_idをrでreview_idを引数として持ってくる%>
