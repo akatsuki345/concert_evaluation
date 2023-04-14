@@ -13,7 +13,7 @@
       </div>
       <% end %>
 
-      <%= form_with model: @order, url: comfirm_path do |f| %>
+      <%= form_with model: @order, url: public_comfirm_path do |f| %>
       <h5 class='font-weight-bolder'>お支払い方法</h5>
         <%= f.collection_radio_buttons( :payment_method, Order.payment_methods_i18n, :first, :last) do |b| %>
         <%= b.radio_button({ class: "form-input-check", required: true}) %>

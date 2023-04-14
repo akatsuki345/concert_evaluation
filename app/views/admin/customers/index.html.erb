@@ -10,6 +10,7 @@
    <tr>
     <td class="table-active">会員ID</td>
     <td class="table-active">氏名</td>
+    <td class="table-active">ニックネーム/アーティスト名</td>
     <td class="table-active">メールアドレス</td>
     <td class="table-active">ステータス</td>
    </tr>
@@ -21,6 +22,7 @@
       <%= customer.first_name %> <%= customer.last_name %>
      <% end %>
     </td>
+    <td><%= customer.nickname %></td>
     <td><%= customer.email %></td>
     <% if customer.is_deleted == false %>
      <td><p class="text-success">有効</p></td>

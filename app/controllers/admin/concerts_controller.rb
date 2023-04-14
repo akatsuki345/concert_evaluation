@@ -46,7 +46,7 @@ class Admin::ConcertsController < ApplicationController
   private
 
   def admin_params
-    params.require(:concert).permit(:image, :is_active, :name, :introduction, :category, :category_id, :price, :content)
+    params.require(:concert).permit(:image, :is_active, :name, :nickname, :introduction, :category, :category_id, :price, :content)
   end
 
 end
