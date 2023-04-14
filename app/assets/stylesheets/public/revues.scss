@@ -1,3 +1,31 @@
 // Place all the styles related to the public/revues controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+// 新規投稿ページ
+// https://www.will3in.co.jp/frontend-blog/article/5star-rating-on-contact-form7
+.star-field{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: right;
+}
+.star-field input[type='radio']{
+    display: none;
+}
+.star-field label{
+    font-size: 50px;
+    padding-right: 10px;
+    color: #ccc;
+    font-size: 30px;
+    cursor: pointer;
+}
+.star-field label:hover,
+.star-field label:hover ~ label,
+.star-field input[type='radio']:checked ~ label{
+    color: rgb(255, 145, 0);
+}
+
+// 一覧表示ページ
+.star{
+  font-size: 50px;
+  color: rgb(255, 145, 0);
+}

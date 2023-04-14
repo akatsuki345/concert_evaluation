@@ -42,6 +42,18 @@
          <%= form_with model: [@concert, @revue], url: public_concert_revues_path(@concert.id), method: :post do |f| %>
           <%= f.text_area :impressions, rows: '5', placeholder: "レビューをここに" %>
           <%= f.submit "送信する" %>
+          <div class="star-field">
+              <input id="star5" type="radio" name="tweet[star]" value="5" />
+              <label for="star5">★</label>
+              <input id="star4" type="radio" name="tweet[star]" value="4" />
+              <label for="star4">★</label>
+              <input id="star3" type="radio" name="tweet[star]" value="3" />
+              <label for="star3">★</label>
+              <input id="star2" type="radio" name="tweet[star]" value="2" />
+              <label for="star2">★</label>
+              <input id="star1" type="radio" name="tweet[star]" value="1" />
+              <label for="star1">★</label>
+          </div>
          <% end %>
       </div>
       <h3><span class="bg-light bg-gradient">レビュー一覧</span></h3>
@@ -65,7 +77,15 @@
           <% end %>
         </td>
         <td><%= link_to public_concert_revues_path(r.concert, r) do %> <%# @bookでbook_idをrでreview_idを引数として持ってくる%>
-          <%= r.impressions %><% end %>
+          <%= r.impressions %>
+          <div class="star">
+            <% if t.star? %>
+              <% for i in 1..t.star do %>
+               ★
+              <% end %>
+            <% end %>
+          </div>
+          <% end %>
         </td>
         <td><%= link_to "コメント", public_concert_comments_path(concert_id: @concert.id, revue_id: r.id) %></td>
       </tr>
