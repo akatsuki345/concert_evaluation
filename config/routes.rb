@@ -8,7 +8,7 @@ Rails.application.routes.draw do
      resources :revues, only: [:index, :show, :destroy]
       resources :comments, only: [:index, :show, :destroy]
     end
-    
+
     resources :customers, only: [:index, :show, :edit, :update]
     resources :categories, only: [:index, :create, :edit, :update]
   end
@@ -22,7 +22,9 @@ Rails.application.routes.draw do
       resources :comments, only: [:index, :edit, :create, :update, :destroy]
     end
     get "search" => "searches#search"
-    resources :orders, only: [:new, :comfirm, :complete, :create, :index, :show]
+    resources :orders, only: [:new, :create, :index, :show]
+    post "orders/comfirm" => "orders#comfirm", as: "comfirm"
+    get "orders/complete" => "orders#complete",as:"complete"
     resources :cart_items, only: [:index, :update, :destroy, :create]
     delete "cart_items/destroy_all", to: "cart_items#destroy_all", as: "destroy_all"
     resources :customers, only: [:show, :edit, :update] do

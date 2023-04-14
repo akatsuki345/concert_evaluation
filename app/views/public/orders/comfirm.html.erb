@@ -18,10 +18,10 @@
                     <% @carts.each do |cart| %>
                     <tr>
                         <td>
-                            <%= image_tag cart.item.get_image, size:'50x50'%>
-                            <%= cart.item.name %>
+                            <%= image_tag cart.concert.get_image, size:'50x50'%>
+                            <%= cart.concert.name %>
                         </td>
-                        <td class='text-right'><%= cart.item.add_tax_price %>円</td>
+                        <td class='text-right'><%= cart.concert.add_tax_price %>円</td>
                         <td class='text-right'><%= cart.sheet %>枚</td>
                         <td class='text-right'><%= cart.add_total_payment_all %>円</td>
                     </tr>
@@ -60,7 +60,7 @@
     </div>
 
     <div class='text-center mb-2'>
-        <%= form_with model: @order, url:orders_path,method: :post do |f|%>
+        <%= form_with model: @order, url:public_orders_path,method: :post do |f|%>
             <%= f.hidden_field :postal_code %>
             <%= f.hidden_field :address %>
             <%= f.hidden_field :name %>
