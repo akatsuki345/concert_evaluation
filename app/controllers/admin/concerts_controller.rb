@@ -13,6 +13,7 @@ class Admin::ConcertsController < ApplicationController
   def create
          @concert = Concert.new(admin_params)
       if @concert.save
+        @concert.save_tags(params[:concert][:tag])
         redirect_to admin_concert_path(@concert), notice: "You have created concert successfully."
       else
        render :new
@@ -46,7 +47,7 @@ class Admin::ConcertsController < ApplicationController
   private
 
   def admin_params
-    params.require(:concert).permit(:image, :is_active, :name, :nickname, :introduction, :category, :category_id, :price, :content)
+    params.require(:concert).permit(:image, :is_active, :name, :nickname, :introduction, :category, :category_id, :price)
   end
 
 end

@@ -14,7 +14,6 @@ class Concert < ApplicationRecord
   validates :introduction, presence: true
   validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 0}
   validates :is_active, inclusion: [true, false]
-  validates :content, presence: true
 
   has_one_attached :image
 
