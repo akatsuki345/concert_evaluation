@@ -25,9 +25,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    # byebug
     order = current_customer.orders.new(order_params)
     order.status = 0
-    order.save
+    order.save!
     current_customer.cart_items.each do |cart_item|
       order_detail = OrderDetail.new(
         order_id: order.id,
@@ -39,11 +40,15 @@ class Public::OrdersController < ApplicationController
       order_detail.save!
       cart_item.destroy
     end
-    # current_customer.cart_items.destroy_all
-    redirect_to public_complete_path
+    #current_customer.cart_items.destroy_all
+    # flash.now[:notice] = "注文を確定しました。"
+    # render :index
+    render :complete
   end
 
   def index
+    #byebug
+    pp current_customer.orders
     @orders = current_customer.orders
     @carts = current_customer.cart_items
   end

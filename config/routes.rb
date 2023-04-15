@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     root to: "home#top"
     resources :order_details, only: [:update]
     resources :orders, only: [:show, :update]
+    resources :tags, only: [:index, :show, :destroy]
     resources :concerts, only: [:index, :show, :destroy, :new, :create, :confirm, :complete, :edit, :update] do
      resources :revues, only: [:index, :show, :destroy]
       resources :comments, only: [:index, :show, :destroy]
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
     resources :orders, only: [:new, :create, :index, :show]
     post "orders/comfirm" => "orders#comfirm", as: "comfirm"
-    get "orders/complete" => "orders#complete",as:"complete"
+    get "orders/complete" => "orders#complete",as: "complete"
     resources :cart_items, only: [:index, :update, :destroy, :create]
     delete "cart_items/destroy_all", to: "cart_items#destroy_all", as: "destroy_all"
     resources :customers, only: [:show, :edit, :update] do

@@ -11,13 +11,13 @@ class Admin::ConcertsController < ApplicationController
   end
 
   def create
-         @concert = Concert.new(admin_params)
-      if @concert.save
-        @concert.save_tags(params[:concert][:tag])
-        redirect_to admin_concert_path(@concert), notice: "You have created concert successfully."
-      else
+    @concert = Concert.new(admin_params)
+    if @concert.save
+      @concert.save_tags(params[:tag].values[0][0].values[0])
+      redirect_to admin_concert_path(@concert), notice: "You have created concert successfully."
+    else
        render :new
-      end
+    end
   end
 
   def show
@@ -31,7 +31,7 @@ class Admin::ConcertsController < ApplicationController
   def update
          @concert = Concert.find(params[:id])
       if @concert.update(admin_params)
-         @concert.save_tags(params[:concert][:tag])
+         @concert.save_tags(params[:tag].values[0][0].values[0])
         redirect_to admin_concert_path(@concert), notice: "You have updated item successfully."
       else
         render :edit

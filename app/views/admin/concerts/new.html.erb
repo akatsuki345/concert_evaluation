@@ -31,9 +31,9 @@
                 <dt class="col-4 mt-3"><%= f.label :category_id, "カテゴリー", class: "text-right" %></dt>
                 <dd class="col-8 mt-3"><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "--選択してください--" %></dd>
 
-                <!--<dt class="col-4 mt-3"><%#= post.label :tag, 'タグ', class: "text-right" %></dt>-->
-                <!--<dd class="col-8 mt-3"><%#= post.text_field :tag, value: @concert.tags.pluck(:name) %></dd>-->
-                <!--<small>スペースで区切ることで複数指定できます。</small><br>-->
+                <dt class="col-4 mt-3"><%= label :tag, 'タグ', class: "text-right" %></dt>
+                <dd class="col-8 mt-3"><%= text_field :tag, value: @concert.tags.pluck(:name) %></dd>
+                <small>スペースで区切ることで複数指定できます。</small><br>
 
                 <dt class="col-4 mt-3"><%= f.label :price, "チケット税抜価格", class: "text-right" %></dt>
                 <dd class="col-8 mt-3 input-group d-flex align-items-end"><%= f.text_field :price, class: "form-control price", placeholder: "1000" %>円</dd>

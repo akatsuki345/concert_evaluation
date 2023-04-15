@@ -19,12 +19,12 @@
         <p class="col-3 h5">カテゴリー</p>
         <p class="col-8"><%= @concert.category.name %></p>
       </div>
-      <!--<div class="form-group row">-->
-      <!--  <p class="col-3 h5">タグ</p>-->
-      <!--  <p class="col-8"><%# @concert.tags.each do |tag| %></p>-->
-      <!--  <p class="col-8"><%#= link_to tag.name, tag_path(tag) %></p>-->
-      <!--  <%# end %>-->
-      <!--</div>-->
+      <div class="form-group row">
+        <p class="col-3 h5">タグ</p>
+        <p class="col-8"><% @concert.tags.each do |tag| %></p>
+        <p class="col-8"><%= link_to tag.name, admin_tag_path(tag) %></p>
+        <% end %>
+      </div>
       <div class="form-group row">
         <p class="col-3 h5">チケット税込価格<br>(税抜価格)</p>
         <p class="col-8"><%= @concert.add_tax_price.to_s(:delimited) %>（<%= @concert.price.to_s(:delimited) %>）円</p>
