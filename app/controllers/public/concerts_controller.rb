@@ -27,9 +27,3 @@ class Public::ConcertsController < ApplicationController
     end
 
 end
-
-
-concerts  tags
-hoge uta
-fuga uta
-foo 
