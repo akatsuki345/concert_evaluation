@@ -17,6 +17,6 @@ en:
         waiting_for_payment: "入金待ち"
         payment_confirmation: "入金確認"
 
-    time:
-      formats:
-        default: "%Y/%m/%d %H:%M:%S"
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"

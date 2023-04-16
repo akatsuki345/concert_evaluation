@@ -3,17 +3,18 @@
     <div class="col-md-10 col-sm-12 mx-6 mx-sm-auto px-auto">
         <h3 class="mb-5 col-8 d-flex justify-content-center"><span>コンサート新規登録</span></h3>
 
-                <%= form_with model: @concert, url: admin_concerts_path, method: :post, local:true do |f| %>
-                <% if @concert.errors.any? %>
-                  <div id="error_explanation">
-                    <h3><%= pluralize(@concert.errors.count, "error") %> prohibited this obj from being saved:</h3>
-                    <ul>
-                      <% @concert.errors.full_messages.each do |message| %>
-                        <li><%= message %></li>
-                      <% end %>
-                    </ul>
-                  </div>
+        <%= form_with model: @concert, url: admin_concerts_path, method: :post, local:true do |f| %>
+          <% if @concert.errors.any? %>
+            <div id="error_explanation">
+              <h3><%= pluralize(@concert.errors.count, "error") %> prohibited this obj from being saved:</h3>
+              <ul>
+                <% @concert.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
                 <% end %>
+              </ul>
+            </div>
+          <% end %>
+          
           <div class="w-50 mx-auto">
               <dl class="row">
                 <dt class="col-4"><%= f.label :image, "アーティスト画像", class: "text-right" %></dt>
