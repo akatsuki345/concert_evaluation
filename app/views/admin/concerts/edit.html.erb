@@ -6,33 +6,49 @@
         <h3 class="col-6"><span>コンサート編集</span></h3>
 
         <%= form_with model: @concert, url: admin_concert_path(@concert.id), method: :patch, local:true, class: "container text-center pl-9" do |f| %>
-        <div class="form-group row">
-          <label class="col-4 text-right">コンサート画像</label>
-          <%= f.file_field :image, class: "col-4 form-control-file pl-0", accept: "image/*" %>
-        </div>
-        <div class="form-group row">
-          <label class="col-4 text-right">コンサート名</label>
-          <%= f.text_field :name, class: "col-4 form-control name", placeholder: "コンサート名" %>
-        </div>
-        <div class="form-group row">
-          <label class="col-4 text-right">コンサート説明</label>
-          <%= f.text_area :introduction, class: "col-4 form-control introduction", placeholder: "ここに説明文を記述します" %>
-        </div>
-        <div class="form-group row">
-          <label class="col-4 text-right">カテゴリー</label>
-          <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "--選択してください--" %>
-        </div>
-        <div class="form-group row">
-          <label class="col-4 text-right">税抜価格</label>
-          <%= f.text_field :price, class: "col-4 form-control price", placeholder: "1000" %>円
-        </div>
-        <div class="form-group row">
-          <label class="col-4 text-right">販売ステータス</label>
-          <%= f.radio_button :is_active, :true %>
-          <%= f.label :is_active, "販売中", value: "true", class: "mr-5" %>
-          <%= f.radio_button :is_active, :false %>
-          <%= f.label :is_active, "販売停止中", value: "false" %>
-        </div>
+        <div class="w-50 mx-auto">
+              <dl class="row">
+                <dt class="col-4"><%= f.label :image, "アーティスト画像", class: "text-right" %></dt>
+                <dd class="col-8"><%= f.file_field :image, class: "form-control-file pl-0", accept: "image/*" %></dd>
+
+                <dt class="col-4 mt-3"><label for="ice-cream-choice">開催者</label></dt>
+                <dd class="col-8 mt-3"><input list="customers" id="customer-choice" name="concert[customer_name]">
+                <datalist id="customers">
+                  <% Customer.all.each do |c| %>
+                    <option value="<%= c.nickname %>">
+                  <% end %>
+                </datalist>
+                </dd>
+
+                <!--<dt class="col-4 mt-3"><#%= f.label :name, "アーティスト名", class: "text-right" %></dt>-->
+                <!--<dd class="col-8 mt-3"><%#= f.text_field :name, class: "form-control name", placeholder: "アーティスト名" %></dd>-->
+
+                <dt class="col-4 mt-3"><%= f.label :name, "コンサート名", class: "text-right" %></dt>
+                <dd class="col-8 mt-3"><%= f.text_field :name, class: "form-control name", placeholder: "コンサート名" %></dd>
+
+                <dt class="col-4 mt-3"><%= f.label :introduction, "コンサート説明", class: "text-right" %></dt>
+                <dd class="col-8 mt-3"><%= f.text_area :introduction, class: "form-control introduction", placeholder: "ここに説明文を記述します" %></dd>
+
+                <dt class="col-4 mt-3"><%= f.label :category_id, "カテゴリー", class: "text-right" %></dt>
+                <dd class="col-8 mt-3"><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "--選択してください--" %></dd>
+
+                <dt class="col-4 mt-3"><%= label :tag, 'タグ', class: "text-right" %></dt>
+                <dd class="col-8 mt-3"><%= text_field :tag, value: @concert.tags.pluck(:name) %></dd>
+                <small>スペースで区切ることで複数指定できます。</small><br>
+
+                <dt class="col-4 mt-3"><%= f.label :price, "チケット税抜価格", class: "text-right" %></dt>
+                <dd class="col-8 mt-3 input-group d-flex align-items-end"><%= f.text_field :price, class: "form-control price", placeholder: "1000" %>円</dd>
+
+                <dt class="col-4 mt-3"><label class="text-right">販売ステータス</label></dt>
+
+                <dd class="col-8 mt-3">
+                  <%= f.radio_button :is_active, :true %>
+                  <%= f.label :is_active, "販売中", value: "true", class: "mr-5" %>
+                  <%= f.radio_button :is_active, :false %>
+                  <%= f.label :is_active, "販売停止中", value: "false" %>
+                </dd>
+              </dl>
+          </div>
         <div class="form-group text-center mt-5">
           <%= f.submit "変更を保存", class: "btn btn-success btn-lg" %>
         </div>
