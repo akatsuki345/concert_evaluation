@@ -7,7 +7,7 @@
     <div class='row'>
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
             <strong>購入者</strong>
-            <p><%= link_to @order.add_full_name, admin_customer_path(@order.customer) %></p>
+            <p><%= link_to @order.customer.first_name, admin_customer_path(@order.customer) %></p>
             <strong>注文日</strong>
             <p><%= @order.created_at%></p>
             <strong>配送先</strong>
@@ -24,19 +24,19 @@
                    <tr>
                        <th>商品名</th>
                        <th>単価（税込）</th>
-                       <th>数量</th>
+                       <th>数量(枚)</th>
                        <th>小計</th>
-                       <th>製作ステータス</th>
+                       <th>発送ステータス</th>
                        <th></th>
                    </tr>
                </thead>
                <tbody>
                <% @order_details.each do |order_detail| %>
                 <tr>
-                 <td><%= order_detail.item.name %></td>
+                 <td><%= order_detail.concert.name %></td>
                  <td><%= (order_detail.price*1.1).round.to_s(:delimited) %></td>
-                 <td><%= order_detail.amount %></td>
-                 <td><%= (order_detail.price*order_detail.amount).to_s(:delimited) %></td>
+                 <td><%= order_detail.sheet %></td>
+                 <td><%= (order_detail.price*order_detail.sheet).to_s(:delimited) %></td>
                  <td>
                    <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), method: :patch do |f| %>
                    <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
