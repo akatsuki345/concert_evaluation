@@ -5,9 +5,6 @@ class Order < ApplicationRecord
   enum status: {
       waiting_for_payment: 0,
       payment_confirmation: 1,
-      now_at_work: 2,
-      shopping_preparation: 3,
-      shopped: 4
     }
   validates :name, presence:true
 

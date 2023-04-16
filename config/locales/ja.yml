@@ -4,7 +4,19 @@ en:
   enums:
     order_detail:
       making_status:
-        tyakusyuhuka: 着手不可
-        tyakusyumati: 着手待ち
+        hassouhuka: 発送不可
         hassoutyuu: 発送中
         hassoukanryou: 発送完了
+
+
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
+      status:
+        waiting_for_payment: "入金待ち"
+        payment_confirmation: "入金確認"
+
+    time:
+      formats:
+        default: "%Y/%m/%d %H:%M:%S"
