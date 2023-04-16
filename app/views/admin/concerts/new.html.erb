@@ -19,8 +19,18 @@
                 <dt class="col-4"><%= f.label :image, "アーティスト画像", class: "text-right" %></dt>
                 <dd class="col-8"><%= f.file_field :image, class: "form-control-file pl-0", accept: "image/*" %></dd>
 
-                <dt class="col-4 mt-3"><%= f.label :name, "アーティスト名", class: "text-right" %></dt>
-                <dd class="col-8 mt-3"><%= f.text_field :name, class: "form-control name", placeholder: "アーティスト名" %></dd>
+                <dt class="col-4 mt-3"><label for="ice-cream-choice">開催者</label></dt>
+                 <dd class="col-8 mt-3"><input list="customers" id="customer-choice" name="concert[customer_name]">
+
+                   <datalist id="customers">
+                     <% Customer.all.each do |c| %>
+                      <option value="<%= c.nickname %>">
+                      <% end %>
+                   </datalist>
+                 </dd>
+
+                <!--<dt class="col-4 mt-3"><#%= f.label :name, "アーティスト名", class: "text-right" %></dt>-->
+                <!--<dd class="col-8 mt-3"><%#= f.text_field :name, class: "form-control name", placeholder: "アーティスト名" %></dd>-->
 
                 <dt class="col-4 mt-3"><%= f.label :name, "コンサート名", class: "text-right" %></dt>
                 <dd class="col-8 mt-3"><%= f.text_field :name, class: "form-control name", placeholder: "コンサート名" %></dd>

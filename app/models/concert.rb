@@ -1,6 +1,8 @@
 class Concert < ApplicationRecord
 
   belongs_to :category
+  # Concertテーブルに、customer_idを追加して、以下のコメントを外す
+  belongs_to :customer
   has_one :cart_item
   has_many :order_details
   has_many :revues, dependent: :destroy
