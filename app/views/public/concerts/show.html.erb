@@ -12,6 +12,9 @@
             <p class="h5 mb-4" style="margin-left: 50px;">
               <%= @concert.introduction %>
             </p>
+            <% @concert.tags.each do |tag| %>
+             <p><%= tag.name %></p>
+            <% end %>
             <p class="h4 mb-4" style="margin-left: 50px;">
               <%= @concert.add_tax_price.to_s(:delimited) %>（<%= @concert.price.to_s(:delimited) %>）円
               <small>(税込)</small>
@@ -43,15 +46,15 @@
           <%= f.text_area :impressions, rows: '5', placeholder: "レビューをここに" %>
           <%= f.submit "送信する" %>
           <div class="star-field">
-              <input id="star5" type="radio" name="tweet[star]" value="5" />
+              <input id="star5" type="radio" name="revue[star]" value="5" />
               <label for="star5">★</label>
-              <input id="star4" type="radio" name="tweet[star]" value="4" />
+              <input id="star4" type="radio" name="revue[star]" value="4" />
               <label for="star4">★</label>
-              <input id="star3" type="radio" name="tweet[star]" value="3" />
+              <input id="star3" type="radio" name="revue[star]" value="3" />
               <label for="star3">★</label>
-              <input id="star2" type="radio" name="tweet[star]" value="2" />
+              <input id="star2" type="radio" name="revue[star]" value="2" />
               <label for="star2">★</label>
-              <input id="star1" type="radio" name="tweet[star]" value="1" />
+              <input id="star1" type="radio" name="revue[star]" value="1" />
               <label for="star1">★</label>
           </div>
          <% end %>

@@ -49,6 +49,6 @@ class Public::RevuesController < ApplicationController
 
   private
     def revue_params
-      params.require(:revue).permit(:impressions)
+      params.require(:revue).permit(:impressions, :star)
     end
 end
