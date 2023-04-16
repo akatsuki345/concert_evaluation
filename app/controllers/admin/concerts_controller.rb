@@ -12,7 +12,7 @@ class Admin::ConcertsController < ApplicationController
 
   def create
     @concert = Concert.new(admin_params)
-    @concert.customer_id = Customer.find_by_nickname(params[:concert][:customer_name]).id
+    @concert.customer_id = Customer.find_by_nickname(params[:concert][:customer_name])&.id
     if @concert.save
       @concert.save_tags(params[:tag].values[0][0].values[0])
       redirect_to admin_concert_path(@concert), notice: "You have created concert successfully."
