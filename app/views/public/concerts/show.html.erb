@@ -63,6 +63,7 @@
   <tr class="bg-light">
    <th>ユーザー</th>
    <th>レビュー</th>
+   <th></th>
    <th>コメント</th>
   </tr>
 </thead>
@@ -78,6 +79,9 @@
         </td>
         <td><%= link_to public_concert_revues_path(r.concert, r) do %> <%# @bookでbook_idをrでreview_idを引数として持ってくる%>
           <%= r.impressions %>
+          <% end %>
+        </td>
+        <td>
           <div class="star">
             <% if r.star? %>
               <% for i in 1..r.star do %>
@@ -85,7 +89,6 @@
               <% end %>
             <% end %>
           </div>
-          <% end %>
         </td>
         <td><%= link_to "コメント", public_concert_comments_path(concert_id: @concert.id, revue_id: r.id) %></td>
       </tr>
