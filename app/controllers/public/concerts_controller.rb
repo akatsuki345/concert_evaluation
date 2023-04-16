@@ -7,6 +7,8 @@ class Public::ConcertsController < ApplicationController
       @concerts = Concert.search_category(params[:category_id]).page(params[:page]).per(8)
       @title = params[:category_name]
       @add_concerts_title = @concerts.first.name if @concerts.present?
+    elsif params[:tag_name].present?
+      @concerts = Concert.joins(:tags).where("tags.name LIKE ?", "%#{params[:tag_name]}%").page(params[:page]).per(8)
     else
       @concerts = Concert.page(params[:page]).per(8)
     end
@@ -25,3 +27,9 @@ class Public::ConcertsController < ApplicationController
     end
 
 end
+
+
+concerts  tags
+hoge uta
+fuga uta
+foo 
