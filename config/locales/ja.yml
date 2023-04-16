@@ -1,0 +1,10 @@
+en:
+  activerecord:
+   #(この辺に他の設定値がある)
+  enums:
+    order_detail:
+      making_status:
+        tyakusyuhuka: 着手不可
+        tyakusyumati: 着手待ち
+        hassoutyuu: 発送中
+        hassoukanryou: 発送完了

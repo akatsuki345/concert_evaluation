@@ -10,7 +10,7 @@ class Admin::OrdersController < ApplicationController
       @order.update(order_params)
    if @order.status == "payment_confirmation"
       @order_detail = @order.order_details
-      @order_detail.update_all(making_status:'tyakusyumati')
+      @order_detail.update_all(shipping_status:1)
    end
       redirect_back(fallback_location: admin_order_path)
   end
