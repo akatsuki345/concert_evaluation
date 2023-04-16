@@ -26,8 +26,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create, :index, :show]
     post "orders/comfirm" => "orders#comfirm", as: "comfirm"
     get "orders/complete" => "orders#complete",as: "complete"
-    resources :cart_items, only: [:index, :update, :destroy, :create]
     delete "cart_items/destroy_all", to: "cart_items#destroy_all", as: "destroy_all"
+    resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :customers, only: [:show, :edit, :update] do
       collection do
         get 'unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
