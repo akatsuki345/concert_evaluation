@@ -1,0 +1,19 @@
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr class="bg-light">
+            <th>名前</th>
+            <th>記入日</th>
+            <th>コメント</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% revue_comments.each do |comment| %>
+            <tr>
+              <td><%= comment.customer.nickname %></td>
+              <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+              <td><%= comment.comment %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <p>コメント件数：<%= revue_comments.count %></p>

@@ -1,2 +1,2 @@
-$(".comments_area").html("<%= j(render 'comments/comment', revue.comments: @revue.comments) %>");
+$(".comments_area").html("<%= j(render 'public/comments/comment', revue_comments: @revue.comments) %>");
 $("textarea").val("");

@@ -9,12 +9,12 @@ class Public::CommentsController < ApplicationController
 
   def create
     concert = Concert.find(params[:concert_id])
-    revue = Revue.find(params[:revue_id])
+    @revue = Revue.find(params[:revue_id])
     comment = current_customer.comments.new(comment_params)
-    comment.revue_id = revue.id
+    comment.revue_id = @revue.id
     comment.concert_id = concert.id
     comment.save
-    redirect_to public_concert_comments_path(concert_id: concert.id, revue_id: revue.id)
+    #redirect_to public_concert_comments_path(concert_id: concert.id, revue_id: revue.id)
   end
 
   def update
