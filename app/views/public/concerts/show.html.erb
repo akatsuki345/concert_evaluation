@@ -33,101 +33,92 @@
         <span class="btn btn-sm btn-secondary">受付終了</span>
       </div>
       <% end %>
-    </div><div class="container my-5">
-   <div class="row">
-     <div class="col-10">
-       <div>
-         <%= form_with model: [@concert, @revue], url: public_concert_revues_path(@concert.id), method: :post do |f| %>
-          <%= f.text_area :impressions, rows: '5', placeholder: "レビューをここに" %>
-          <%= f.submit "送信する" %>
-          <div class="star-field">
-              <input id="star5" type="radio" name="revue[star]" value="5" />
-              <label for="star5">★</label>
-              <input id="star4" type="radio" name="revue[star]" value="4" />
-              <label for="star4">★</label>
-              <input id="star3" type="radio" name="revue[star]" value="3" />
-              <label for="star3">★</label>
-              <input id="star2" type="radio" name="revue[star]" value="2" />
-              <label for="star2">★</label>
-              <input id="star1" type="radio" name="revue[star]" value="1" />
-              <label for="star1">★</label>
-          </div>
-         <% end %>
-      </div>
-      <h3><span class="bg-light bg-gradient">レビュー一覧</span></h3>
-     </div>
-<table class='table table-hover table-inverse'>
- <thead>
-  <tr class="bg-light">
-   <th>ユーザー</th>
-   <th>レビュー</th>
-   <th></th>
-   <th>コメント</th>
-  </tr>
-</thead>
-   <tbody>
-      <% @revues.each do |r| %>
-      <tr>
-        <td>
-          <%= link_to public_customer_path(r.customer.id) do %>
-            <%#= attachment_image_tag(r.customer, :image, :fill, 70, 70,
-                format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg") %>
-            <%= r.customer.nickname%>
-          <% end %>
-        </td>
-        <td><%#= link_to public_concert_revues_path(r.concert, r) do %> <%# @bookでbook_idをrでreview_idを引数として持ってくる%>
-          <%= r.impressions %>
-          <%# end %>
-        </td>
-        <td>
-          <div class="star">
-            <% if r.star? %>
-              <% for i in 1..r.star do %>
-               ★
-              <% end %>
-            <% end %>
-          </div>
-        </td>
-        <td><%= link_to "コメント", public_concert_comments_path(concert_id: @concert.id, revue_id: r.id) %></td>
-      </tr>
+    </div>
+<div class="container my-5">
+  <h3><span class="bg-light bg-gradient">レビュー一覧</span></h3>
+  <div class="row">
+    <div class="col-10">
+      <%= form_with model: [@concert, @revue], url: public_concert_revues_path(@concert.id), method: :post do |f| %>
+        <%= f.text_area :impressions, rows: '5', placeholder: "レビューをここに" %>
+        <div class="star-field">
+          <input id="star5" type="radio" name="revue[star]" value="5" />
+          <label for="star5">★</label>
+          <input id="star4" type="radio" name="revue[star]" value="4" />
+          <label for="star4">★</label>
+          <input id="star3" type="radio" name="revue[star]" value="3" />
+          <label for="star3">★</label>
+          <input id="star2" type="radio" name="revue[star]" value="2" />
+          <label for="star2">★</label>
+          <input id="star1" type="radio" name="revue[star]" value="1" />
+          <label for="star1">★</label>
+        </div>
+        <%= f.submit "送信する" %>
       <% end %>
-    </tbody>
-  </table>
+    </div>
+    <div class="col-12">
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr class="bg-light">
+            <th>ユーザー</th>
+            <th>レビュー</th>
+            <th>評価</th>
+            <th>コメント</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @revues.each do |r| %>
+            <tr>
+              <td>
+                <%= link_to public_customer_path(r.customer.id) do %>
+                  <%= r.customer.nickname%>
+                <% end %>
+              </td>
+              <td><%= r.impressions %></td>
+              <td>
+                <div class="star">
+                  <% if r.star? %>
+                    <% for i in 1..r.star do %>
+                      ★
+                    <% end %>
+                  <% end %>
+                </div>
+              </td>
+              <td><%= link_to "コメント", public_concert_comments_path(concert_id: @concert.id, revue_id: r.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class ="paginate">
+        <%= paginate @revues %>
+      </div>
+    </div>
   </div>
-  <div class ="paginate">
-    <%= paginate @revues %>
-  </div>
- </div>
 </div>
-<%# レビュー一覧表示%>
-
 <style>
-.star-field{
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: left;
-}
-.star-field input[type='radio']{
-    display: none;
-}
-.star-field label{
-    font-size: 50px;
-    padding-right: 10px;
-    color: #ccc;
+  .star-field{
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: left;
+  }
+  .star-field input[type='radio']{
+      display: none;
+  }
+  .star-field label{
+      font-size: 50px;
+      padding-right: 10px;
+      color: #ccc;
+      font-size: 30px;
+      cursor: pointer;
+  }
+  .star-field label:hover,
+  .star-field label:hover ~ label,
+  .star-field input[type='radio']:checked ~ label{
+      color: rgb(255, 145, 0);
+  }
+  .star{
     font-size: 30px;
-    cursor: pointer;
-}
-.star-field label:hover,
-.star-field label:hover ~ label,
-.star-field input[type='radio']:checked ~ label{
     color: rgb(255, 145, 0);
-}
-
-// 一覧表示ページ
-.star{
-  font-size: 50px;
-  color: rgb(255, 145, 0);
-}
+  }
 </style>
   </div>
 </div>
