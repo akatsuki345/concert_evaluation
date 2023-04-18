@@ -1,19 +1,20 @@
-<div class='container'>
- <div class='row'>
-  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-  <h2>会員一覧</h2>
-  </div>
- </div>
-
+ <div class="container my-5">
   <div class="row">
+    <div class="col-10">
+      <h3><span class="bg-light bg-gradient">会員一覧</span></h3>
+    </div>
+   </div>
+ <div class="row">
   <table class="table table-bordered border-dark">
-   <tr>
-    <td class="table-active">会員ID</td>
-    <td class="table-active">氏名</td>
-    <td class="table-active">ニックネーム/アーティスト名</td>
-    <td class="table-active">メールアドレス</td>
-    <td class="table-active">ステータス</td>
-   </tr>
+   <thead>
+    <tr class="bg-light">
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>ニックネーム/アーティスト名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+   </thead>
    <% @customers.each do |customer| %>
    <tr>
     <td><%= customer.id %></td>
