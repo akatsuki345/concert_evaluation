@@ -1,12 +1,19 @@
-<h1>Tags#index</h1>
-<%= link_to 'Top', root_path %>
-
-<h2>Tags</h2>
-<ul>
-  <% @tags.each do |tag| %>
-    <li>
-      <%# タグの名前と、関連付く記事数を表示 %>
-      <%= link_to "#{tag.name} ( Concerts: #{tag.concerts.count} )", admin_tag_path(tag) %>
-    </li>
-  <% end %>
-</ul>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12">
+      <h3><span class="bg-light bg-gradient">タグ一覧</span></h3>
+      <table class='table table-hover table-inverse'>
+        <tbody>
+          <% @tags.each do |tag| %>
+          <tr>
+            <td>
+              <%# タグの名前と、関連付く記事数を表示 %>
+              <%= link_to "#{tag.name} ( 関連付くイベント数: #{tag.concerts.count}件 )", admin_tag_path(tag) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
