@@ -5,6 +5,7 @@ en:
     order_detail:
       making_status:
         hassouhuka: 発送不可
+        hassoujunbityuu: 発送準備中
         hassoutyuu: 発送中
         hassoukanryou: 発送完了
 
