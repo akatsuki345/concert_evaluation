@@ -1,5 +1,6 @@
 class Admin::ConcertsController < ApplicationController
   before_action :authenticate_admin!
+  # before_action :set_concert, only: [:show, :edit, :update, :destroy]
 
   def index
     @concert = Concert.page(params[:page])
@@ -23,6 +24,11 @@ class Admin::ConcertsController < ApplicationController
 
   def show
     @concert = Concert.find(params[:id])
+    # if @concert.status_private? && @concert.customer != current_customer
+    #   respond_to do |f|
+    #     f.html { redirect_to admin_concerts_path, notice: 'このページにはアクセスできません' }
+    #   end
+    # end
   end
 
   def edit
@@ -50,5 +56,9 @@ class Admin::ConcertsController < ApplicationController
   def admin_params
     params.require(:concert).permit(:image, :is_active, :name, :nickname, :introduction, :category, :category_id, :price)
   end
+
+  # def set_concert
+  #   @concert = Concert.find(params[:id])
+  # end
 
 end

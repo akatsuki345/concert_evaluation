@@ -10,6 +10,8 @@ class Concert < ApplicationRecord
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
 
+  # enum status: { public: 0, private: 1 }, _prefix: true
+
   scope :search_category, ->(category) {where(category_id: category)}
 
   validates :name, presence: true, uniqueness: true

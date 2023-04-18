@@ -14,7 +14,7 @@
               </ul>
             </div>
           <% end %>
-          
+
           <div class="w-50 mx-auto">
               <dl class="row">
                 <dt class="col-4"><%= f.label :image, "アーティスト画像", class: "text-right" %></dt>
@@ -57,6 +57,16 @@
                   <%= f.radio_button :is_active, :false %>
                   <%= f.label :is_active, "販売停止中", value: "false" %>
                 </dd>
+                <!--<dd class="col-8 mt-3">-->
+                <!--  <%#= f.label(:public, for: nil, class:'concert-status__label') do %>-->
+                <!--    <%#= f.radio_button :status, :public %>-->
+                <!--    <%#= I18n.t('activerecord.attributes.concert.statuses.public') %>-->
+                <!--  <%#end %>-->
+                <!--  <%#= f.label(:private, for: nil, class:'concert-status__label') do %>-->
+                <!--    <%#= f.radio_button :status, :private %>-->
+                <!--    <%#= I18n.t('activerecord.attributes.concert.statuses.private') %>-->
+                <!--  <%# end %>-->
+                <!-- </dd>-->
               </dl>
           </div>
 
