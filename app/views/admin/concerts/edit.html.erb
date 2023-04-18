@@ -12,13 +12,15 @@
               <dd class="col-8"><%= f.file_field :image, class: "form-control-file pl-0", accept: "image/*" %></dd>
 
               <dt class="col-4 mt-3"><label for="ice-cream-choice">開催者</label></dt>
-              <dd class="col-8 mt-3"><input list="customers" id="customer-choice" name="concert[customer_name]">
-              <datalist id="customers">
-                <% Customer.all.each do |c| %>
-                  <option value="<%= c.nickname %>">
-                <% end %>
-              </datalist>
-              </dd>
+
+              <dd class="col-8 mt-3"><%= f.collection_select(:customer_id, @customers, :id, :nickname ) %></dd>
+              <!--<dd class="col-8 mt-3"><input list="customers" id="customer-choice" name="concert[customer_name]">-->
+              <!--<datalist id="customers">-->
+              <!--  <%# Customer.all.each do |c| %>-->
+              <!--    <option value="<%#= c.nickname %>">-->
+              <!--  <%# end %>-->
+              <!--</datalist>-->
+              <!--</dd>-->
 
                 <!--<dt class="col-4 mt-3"><#%= f.label :name, "アーティスト名", class: "text-right" %></dt>-->
                 <!--<dd class="col-8 mt-3"><%#= f.text_field :name, class: "form-control name", placeholder: "アーティスト名" %></dd>-->
@@ -48,14 +50,10 @@
                 </dd>
 
                 <dd class="col-8 mt-3">
-                  <%= f.label(:public, for: nil, class:'concert-status__label') do %>
-                    <%= f.radio_button :status, 0 %>
-                    <%= I18n.t('activerecord.attributes.concert.statuses.public') %>
-                  <% end %>
-                  <%= f.label(:private, for: nil, class:'concert-status__label') do %>
-                    <%= f.radio_button :status, 1 %>
-                    <%= I18n.t('activerecord.attributes.concert.statuses.private') %>
-                  <% end %>
+                  <%= f.label(:public, "公開", class:'concert-status__label') %>
+                    <%= f.radio_button :status, "public" %>
+                  <%= f.label(:private, "非公開", class:'concert-status__label') %>
+                    <%= f.radio_button :status, "private" %>
                  </dd>
               </dl>
           </div>

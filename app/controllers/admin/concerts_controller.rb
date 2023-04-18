@@ -30,9 +30,11 @@ class Admin::ConcertsController < ApplicationController
 
   def edit
     @concert = Concert.find(params[:id])
+    @customers = Customer.where(is_deleted: false)
   end
 
   def update
+  # byebug
          @concert = Concert.find(params[:id])
       if @concert.update(admin_params)
          @concert.save_tags(params[:tag].values[0])
@@ -51,7 +53,8 @@ class Admin::ConcertsController < ApplicationController
   private
 
   def admin_params
-    params.require(:concert).permit(:image, :is_active, :name, :nickname, :introduction, :category, :category_id, :price,  {:cat_ids => []}).merge({status: params[:concert][:status].to_i})
+    params.require(:concert).permit(:image, :is_active, :name, :nickname, :introduction, :category, :category_id, :price, :customer_id, :status,  {:cat_ids => []})
+    # .merge({status: params[:concert][:status].to_i})
   end
 
   def set_concert
