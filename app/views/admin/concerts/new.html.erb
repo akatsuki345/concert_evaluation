@@ -56,16 +56,18 @@
                   <%= f.radio_button :is_active, :false %>
                   <%= f.label :is_active, "販売停止中", value: "false" %>
                 </dd>
-                <!--<dd class="col-8 mt-3">-->
-                <!--  <%#= f.label(:public, for: nil, class:'concert-status__label') do %>-->
-                <!--    <%#= f.radio_button :status, :public %>-->
-                <!--    <%#= I18n.t('activerecord.attributes.concert.statuses.public') %>-->
-                <!--  <%#end %>-->
-                <!--  <%#= f.label(:private, for: nil, class:'concert-status__label') do %>-->
-                <!--    <%#= f.radio_button :status, :private %>-->
-                <!--    <%#= I18n.t('activerecord.attributes.concert.statuses.private') %>-->
-                <!--  <%# end %>-->
-                <!-- </dd>-->
+
+                <dt class="col-4 mt-3"><label class="text-right">公開/非公開</label></dt>
+                <dd class="col-8 mt-3">
+                  <%= f.label(:public, for: nil, class:'concert-status__label') do %>
+                    <%= f.radio_button :status, :public %>
+                    <%= I18n.t('activerecord.attributes.concert.statuses.public') %>
+                  <% end %>
+                  <%= f.label(:private, for: nil, class:'concert-status__label') do %>
+                    <%= f.radio_button :status, :private %>
+                    <%= I18n.t('activerecord.attributes.concert.statuses.private') %>
+                  <% end %>
+                 </dd>
               </dl>
           </div>
 

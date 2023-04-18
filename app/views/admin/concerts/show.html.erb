@@ -35,6 +35,10 @@
         <p class="col-3 h5">販売ステータス</p>
         <p class="col-8"><%= @concert.is_active ? '販売中' : '受付終了' %></p>
       </div>
+      <div class="form-group row">
+        <p class="col-3 h5">公開/非公開</p>
+        <p class="col-8"><%= @concert.status == 0 ? '公開中' : '非公開' %></p>
+      </div>
     </div>
   </div>
   <div class="form-group text-center my-5">
