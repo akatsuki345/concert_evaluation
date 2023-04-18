@@ -1,17 +1,35 @@
-<h1>Tags</h1>
-
-<%= link_to 'Tags List', admin_tags_path %>
-<%= link_to 'Delete', admin_tag_path(@tag), method: :delete, data: {confirm: '関連づいた記事のタグが空になりますがタグを削除しますか？'} %>
-
-<h2>Tag</h2>
-<%# タグ名 %>
-<h3><%= @tag.name %></h3>
-
-<%# タグに関連付く記事一覧 %>
-<ul>
-  <% @tag.concerts.each do |concert| %>
-    <li>
-      <%= link_to concert.name, admin_concert_path(concert) %>
-    </li>
-  <% end %>
-</ul>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-10">
+      <h3><span class="bg-light bg-gradient">タグに関連付く記事一覧</span></h3>
+      <ul class="list-group">
+        <% @tag.concerts.each do |concert| %>
+          <li class="list-group-item">
+            <%= link_to concert.name, admin_concert_path(concert) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-10">
+      <h3><span class="bg-light bg-gradient">タグ</span></h3>
+    </div>
+    <table class='table table-hover table-inverse'>
+      <!--<thead>-->
+      <!--  <tr class="bg-light">-->
+      <!--    <th>タグ名</th>-->
+      <!--  </tr>-->
+      <!--</thead>-->
+      <tbody>
+        <tr>
+          <td><%= @tag.name %></td>
+          <td><%= link_to '削除', admin_tag_path(@tag), method: :delete, data: { confirm: '関連づいた記事のタグが空になりますがタグを削除しますか？' }, class: 'btn btn-danger' %></td>
+          <td><%= link_to 'タグ一覧', admin_tags_path %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
