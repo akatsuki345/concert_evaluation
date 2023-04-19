@@ -17,6 +17,7 @@
                     <th>税抜価格</th>
                     <th>カテゴリー</th>
                     <th>ステータス</th>
+                    <th>公開/非公開</th>
                     <th>レビュー</th>
                     <th>コメント一覧</th>
                 </tr>
@@ -35,6 +36,13 @@
                         <strong class="text-success">販売中</strong>
                         <% else %>
                         <strong class="text-muted">受付終了</strong>
+                        <% end %>
+                      </td>
+                      <td>
+                      <%if concert.status_public? == true %>
+                        <strong class="text-success">公開</strong>
+                        <% else %>
+                        <strong class="text-muted">非公開</strong>
                         <% end %>
                       </td>
                       <td><%= link_to "レビュー", admin_concert_revues_path(concert)%></td>

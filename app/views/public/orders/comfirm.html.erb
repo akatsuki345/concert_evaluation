@@ -21,9 +21,9 @@
                             <%= image_tag cart.concert.get_image, size:'50x50'%>
                             <%= cart.concert.name %>
                         </td>
-                        <td class='text-right'><%= cart.concert.add_tax_price %>円</td>
+                        <td class='text-right'><%= cart.concert.add_tax_price.to_s(:delimited) %>円</td>
                         <td class='text-right'><%= cart.sheet %>枚</td>
-                        <td class='text-right'><%= cart.add_total_payment_all %>円</td>
+                        <td class='text-right'><%= cart.add_total_payment_all.to_s(:delimited) %>円</td>
                     </tr>
                     <% end %>
                 </tbody>
@@ -38,7 +38,7 @@
                 </tr>
                 <tr>
                     <td class='table-secondary'>商品合計</td>
-                    <td class='text-right'><%= @total %>円</td>
+                    <td class='text-right'><%= @total.to_s(:delimited) %>円</td>
                 </tr>
                 <tr>
                     <td class='table-secondary'>請求金額</td>

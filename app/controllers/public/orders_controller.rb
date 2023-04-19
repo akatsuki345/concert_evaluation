@@ -71,6 +71,11 @@ class Public::OrdersController < ApplicationController
         :total_payment,
         # 支払い方法
         :payment_method,
+        # :option,
+        # :address_id,
+        # :other_postal_code,
+        # :other_address,
+        # :other_name
         )
     end
     def select_destination(option)

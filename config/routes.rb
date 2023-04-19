@@ -27,7 +27,8 @@ Rails.application.routes.draw do
     post "orders/comfirm" => "orders#comfirm", as: "comfirm"
     get "orders/complete" => "orders#complete",as: "complete"
     delete "cart_items/destroy_all", to: "cart_items#destroy_all", as: "destroy_all"
-    resources :cart_items, only: [:index, :update, :destroy, :create]
+    # patch "cart_items/update/:id", to: "cart_items#update", as: "update_cart_item"
+    resources :cart_items, only: [:index, :destroy, :update, :create]
     resources :tags, only: [:index, :show, :destroy]
     resources :customers, only: [:show, :edit, :update] do
       collection do
