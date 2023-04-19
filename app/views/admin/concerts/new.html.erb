@@ -63,14 +63,10 @@
 
                 <dt class="col-4 mt-3"><label class="text-right">公開/非公開</label></dt>
                 <dd class="col-8 mt-3">
-                  <%= f.label(:public, for: nil, class:'concert-status__label') do %>
-                    <%= f.radio_button :status, :public %>
-                    <%= I18n.t('activerecord.attributes.concert.statuses.public') %>
-                  <% end %>
-                  <%= f.label(:private, for: nil, class:'concert-status__label') do %>
-                    <%= f.radio_button :status, :private %>
-                    <%= I18n.t('activerecord.attributes.concert.statuses.private') %>
-                  <% end %>
+                  <%= f.label(:public, "公開", class:'concert-status__label') %>
+                    <%= f.radio_button :status, "public" %>
+                  <%= f.label(:private, "非公開", class:'concert-status__label') %>
+                    <%= f.radio_button :status, "private" %>
                  </dd>
               </dl>
           </div>
