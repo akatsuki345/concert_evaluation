@@ -42,7 +42,7 @@
                 </tr>
                 <tr>
                     <td class='table-secondary'>請求金額</td>
-                    <td class='text-right'><%= @order.shipping_cost + @total %>円</td>
+                    <td class='text-right'><%= (@order.shipping_cost + @total).to_s(:delimited) %>円</td>
                 </tr>
             </table>
          </div>

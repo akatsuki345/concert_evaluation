@@ -1,4 +1,4 @@
-<%= form_with model:cart, url: public_cart_item_path(cart.id) do |f| %>
+<%= form_with model:[:public,cart] do |f| %>
     <%= f.select :sheet, [*1..10],{include_blank: '枚数選択'},
     {class: "w-50 d-inline form-control needs-validation", required: true} %>枚
     <%= f.hidden_field :concert_id, :value => concert.id %>
