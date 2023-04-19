@@ -3,6 +3,10 @@ class Admin::HomeController < ApplicationController
 
   def top
     # @orders = Order.all
+    @orders = Order.all
+    if @orders.empty?
+      flash[:alert] = "注文はありません。"
+    end
     @order = Order.page(params[:page])
   end
 end

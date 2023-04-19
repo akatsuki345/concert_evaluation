@@ -29,7 +29,7 @@
                       <td><%= link_to concert.name, admin_concert_path(concert.id)%></td>
                       <td><%= concert.customer.id %></td>
                       <td><%= concert.customer.nickname %></td>
-                      <td><%= concert.price %></td>
+                      <td><%= concert.price.to_s(:delimited) %></td>
                       <td><%= concert.category.name %></td>
                       <td>
                       <%if concert.is_active == true %>
