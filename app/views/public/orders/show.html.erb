@@ -41,7 +41,7 @@
         </tr>
         <tr>
             <td class='table-secondary'>ご請求金額</td>
-            <td class='text-right'><%= @order.total_payment %>円</td>
+            <td class='text-right'><%= @order.total_payment.to_s(:delimited) %>円</td>
         </tr>
         </table>
       </div>
@@ -66,11 +66,11 @@
                 <%= order_detail.concert.name %>
             </td>
             <td>
-                <%= order_detail.concert.add_tax_price %>円</td>
+                <%= order_detail.concert.add_tax_price.to_s(:delimited) %>円</td>
             <td>
                 <%= order_detail.sheet %>個</td>
             <td>
-                <%= order_detail.add_total_payment_all %>円</td>
+                <%= order_detail.add_total_payment_all.to_s(:delimited) %>円</td>
         </tr>
         <% end %>
     　</tbody>
