@@ -11,7 +11,7 @@ Admin.create(
   password: 'summer',
   )
 
-categories = ['コンサート', 'イベント', 'お笑い', 'クラシック']
+categories = ['J-POP', 'コンサート', 'ジャズ', 'クラシック']
 categories.each do |category|
   Category.find_or_create_by(name: category)
 end
