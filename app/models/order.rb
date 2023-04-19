@@ -1,7 +1,9 @@
 class Order < ApplicationRecord
 
   enum payment_method: { credit_card: 0, transfer: 1 }
-
+  
+  attr_accessor :option, :address_id, :other_postal_code, :other_address, :other_name
+  
   enum status: {
       waiting_for_payment: 0,
       payment_confirmation: 1,

@@ -23,9 +23,10 @@ Rails.application.routes.draw do
       resources :comments, only: [:index, :edit, :create, :update, :destroy]
     end
     get "search" => "searches#search"
-    resources :orders, only: [:new, :create, :index, :show]
     post "orders/comfirm" => "orders#comfirm", as: "comfirm"
+    get "orders/comfirm" => "orders#new"
     get "orders/complete" => "orders#complete",as: "complete"
+    resources :orders, only: [:new, :create, :index, :show]
     delete "cart_items/destroy_all", to: "cart_items#destroy_all", as: "destroy_all"
     # patch "cart_items/update/:id", to: "cart_items#update", as: "update_cart_item"
     resources :cart_items, only: [:index, :destroy, :update, :create]
