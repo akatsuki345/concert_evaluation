@@ -1,9 +1,29 @@
-<div>
-  <p>コメント件数：<%= @concert.comments.count %></p>
-  <% @concert.comments.each do |comment| %>
-    <!--<p><%#= image_tag comment.customer.get_profile_image(100,100) %></p>-->
-    <%= comment.customer.nickname %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-    <%= link_to "削除", admin_concert_comment_path(comment.concert, comment), method: :delete %>
-  <% end %>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-10">
+      <h3><span class="bg-light bg-gradient">コメント一覧</span></h3>
+    </div>
+      <table class="table table-bordered border-dark">
+        <thead>
+          <tr class="bg-light">
+            <th>名前</th>
+            <th>日付</th>
+            <th>レビュー</th>
+            <th>削除</th>
+          </tr>
+        </thead>
+        <tbody>
+         <% @concert.comments.each do |comment| %>
+           <tr>
+          <%#= image_tag comment.customer.get_profile_image(100,100) %>
+             <td><%= comment.customer.nickname %></td>
+             <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+             <td><%= comment.comment %></td>
+             <td><%= link_to "削除", admin_concert_comment_path(comment.concert, comment), method: :delete %></td>
+           </tr>
+          <% end %>
+        </tbody>
+       </div>
+      </table>
+         <%= paginate @comment %>
 </div>

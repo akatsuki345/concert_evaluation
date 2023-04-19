@@ -3,16 +3,27 @@
     <div class="col-10">
       <h3><span class="bg-light bg-gradient">レビュー一覧</span></h3>
     </div>
-      <table class='table table-hover table-inverse'>
-        <div>
+      <table class="table table-bordered border-dark">
+        <thead>
+          <tr class="bg-light">
+            <th>名前</th>
+            <th>日付</th>
+            <th>レビュー</th>
+            <th>削除</th>
+          </tr>
+        </thead>
+        <tbody>
          <% @concert.revues.each do |revue| %>
+           <tr>
           <%#= image_tag comment.customer.get_profile_image(100,100) %>
-            <%= revue.customer.first_name+revue.customer.last_name %>
-            <%= revue.created_at.strftime('%Y/%m/%d') %><%= revue.impressions %>
-            <%= link_to "削除", admin_concert_revue_path(revue.concert, revue), method: :delete %>
-         <% end %>
+             <td><%= revue.customer.first_name+revue.customer.last_name %></td>
+             <td><%= revue.created_at.strftime('%Y/%m/%d') %></td>
+             <td><%= revue.impressions %></td>
+             <td><%= link_to "削除", admin_concert_revue_path(revue.concert, revue), method: :delete %></td>
+           </tr>
+          <% end %>
+        </tbody>
        </div>
       </table>
          <%= paginate @revue %>
-  </div>
 </div>
