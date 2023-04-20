@@ -7,4 +7,5 @@ class OrderDetail < ApplicationRecord
     tax = 1.1
     (self.concert.price * tax).floor * self.sheet
   end
+
 end

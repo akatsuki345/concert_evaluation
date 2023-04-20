@@ -7,6 +7,8 @@ class Order < ApplicationRecord
   enum status: {
       waiting_for_payment: 0,
       payment_confirmation: 1,
+      currently_shipping: 2,
+      shopped: 3
     }
   validates :name, presence:true
 

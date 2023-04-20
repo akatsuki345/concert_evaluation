@@ -17,6 +17,9 @@ en:
       status:
         waiting_for_payment: "入金待ち"
         payment_confirmation: "入金確認"
+        currently_shipping: "発送中"
+        shopped: "発送済み"
+
 
   time:
     formats:
