@@ -1,6 +1,6 @@
-<div class="container">
-  <div class="row justify-content-start"> <!-- justify-content-startに変更 -->
-    <div class="col-lg-6 col-md-8">
+<div class="container px-5 px-sm-0">
+ <div class="row">
+  <div class="col-lg-6 col-md-8">
       <%= form_with url: public_concerts_path, method: :get, class: "form-inline" do |f| %>
         <div class="input-group">
           <%= f.text_field :tag_name, class: "form-control", placeholder: "タグ名を入力してください" %>
@@ -21,7 +21,7 @@
   <div class="col-md-8 offset-md-1 mt-5">
     <div class="row">
       <div class="position-relative" style="left: 120px;">
-        <%= image_tag 'concert-2527495_1280', size:"600x350", style: "margin-bottom: -20px;" %>
+        <%= image_tag 'audience-1853662_1280', size:"600x350", style: "margin-bottom: -20px;" %>
         <div class="card-img-overlay d-flex justify-content-center align-items-center">
           <h3 class="card-title text-light text-center">
             <strong>ようこそ、concert_evaluationへ!</strong><br>
@@ -30,25 +30,32 @@
             <strong>チケットの購入には会員登録が</strong><br>
             <strong>必要になります。</strong>
           </h3>
+          <style>
+          .card-title {
+             text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+           }
+           </style>
         </div>
       </div>
     <div class="container">
-    <div class="row">
-      <div class="col-md-10 offset-md-1 mt-5">
-        <h3 style="margin-left: -150px;">新着情報</h3>
-        <table class="table table-borderless float-right">
-          <tr>
-            <% @concerts.each do |concert| %>
-              <td>
-                <%= link_to(image_tag(concert.get_image, size: '230x150', class: 'card-image-top'), public_concert_path(concert.id)) %></br>
-                <%= link_to concert.name, public_concert_path(concert.id) %>
-              </td>
-            <% end %>
-          </tr>
-        </table>
+      <div class="row">
+        <div class="col-md-10 offset-md-1 mt-5">
+          <h3 style="margin-left: -150px;">新着情報</h3>
+          <table class="table table-borderless float-right">
+            <tr>
+              <% @concerts.each do |concert| %>
+                <td>
+                  <%= link_to(image_tag(concert.get_image, size: '230x150', class: 'card-image-top'), public_concert_path(concert.id)) %></br>
+                  <%= link_to concert.name, public_concert_path(concert.id) %>
+                </td>
+              <% end %>
+            </tr>
+          </table>
+        </div>
       </div>
+    <div class="text-right">
+      <%= link_to "全てのコンサート情報を見る＞",  public_concerts_path %>
     </div>
-  <div class="text-right">
-    <%= link_to "全てのコンサート情報を見る＞",  public_concerts_path %>
+   </div>
   </div>
 </div>
