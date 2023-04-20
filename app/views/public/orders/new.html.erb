@@ -32,20 +32,20 @@
           <%= current_customer.add_full_name %>
         </div>
       </div>
-       <div class='row flex-column ml-4 mb-2'>
-         <div>
-          <%= f.radio_button :option, 1,{class: "from-input-check"} %>
-          <%= f.label :option_1, "登録済住所から選択"%><br>
-          </div>
-          <div class='ml-4 mb-2'>
-            <% if @addresses.nil? %>
-              <p>住所が登録されていません。</p>
-            <% else %>
-              <%= f.select :address_id, @addresses.map { |k| [t("#{k.join_address_name}"), k.id] },
-               { include_blank: "選択してください" }, class: "form-control" %>
-            <% end %>
-          </div>
-      </div>
+      <!-- <div class='row flex-column ml-4 mb-2'>-->
+      <!--   <div>-->
+      <!--    <%#= f.radio_button :option, 1,{class: "from-input-check"} %>-->
+      <!--    <%#= f.label :option_1, "登録済住所から選択"%><br>-->
+      <!--    </div>-->
+      <!--    <div class='ml-4 mb-2'>-->
+      <!--      <%# if @addresses.nil? %>-->
+      <!--        <p>住所が登録されていません。</p>-->
+      <!--      <%# else %>-->
+      <!--        <%#= f.select :address_id, @addresses.map { |k| [t("#{k.join_address_name}"), k.id] },-->
+      <!--         { include_blank: "選択してください" }, class: "form-control" %>-->
+      <!--      <%# end %>-->
+      <!--    </div>-->
+      <!--</div>-->
 
       <div class='row flex-column ml-4 mb-2'>
         <div>
