@@ -29,9 +29,9 @@
       </div>
       <div class="form-group row">
         <p class="col-3 h5">タグ</p>
-        <div class="col-8">
+        <div class="tag-list mb-4">
           <% @concert.tags.each do |tag| %>
-           <%= link_to tag.name, admin_tag_path(tag), class: "mr-3" %>
+           <%= link_to tag.name, admin_tag_path(tag), class: "btn btn-outline-secondary mr-2 mb-2" %>
           <% end %>
         </div>
       </div>
