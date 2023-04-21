@@ -14,11 +14,19 @@
 ### 主な利用シーン
 コンサートを見に来てくれたファンにレビューを書いてもらう。
 その評価で、どのような曲やアイドルグループが人気が出るのかを運営側も参考にできるのではと感じた。
+管理者側はamazonaws.comの後ろに/adminを入れてご確認ください
 管理者側のログインメールアドレス:admin@admin
 管理者側のログインパスワード:summer
 
 ## 設計書
-現在考案中
+実装機能リスト
+https://docs.google.com/spreadsheets/d/1bamLwCQpeo9uU83qt_ajUEPa6B74k3ZcoAD4TzIy_o4/edit#gid=1091086188
+
+テーブル定義書
+https://docs.google.com/spreadsheets/d/1Sh7vweLBDZkTAMOsIkDnU4g6T4S9uyLwLTiDI-9OABE/edit#gid=1373217982
+
+アプリケーション詳細設計
+https://docs.google.com/spreadsheets/d/1ffcGloz9Yx6VojsBv_I06P2MCnOND_aTmQvkQdE_VEM/edit#gid=549108681
 
 ## 開発環境
 - OS：Linux(CentOS)

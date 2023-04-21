@@ -37,25 +37,25 @@
            </style>
         </div>
       </div>
-    <!--<div class="container">-->
-    <!--  <div class="row">-->
-    <!--    <div class="col-md-10 offset-md-1 mt-5">-->
-    <!--      <h3 style="margin-left: -150px;">新着情報</h3>-->
-    <!--      <table class="table table-borderless float-right">-->
-    <!--        <tr>-->
-    <!--          <%# @concerts.each do |concert| %>-->
-    <!--            <td>-->
-    <!--              <%#= link_to(image_tag(concert.get_image, size: '230x150', class: 'card-image-top'), public_concert_path(concert.id)) %></br>-->
-    <!--              <%#= link_to concert.name, public_concert_path(concert.id) %>-->
-    <!--            </td>-->
-    <!--          <%# end %>-->
-    <!--        </tr>-->
-    <!--      </table>-->
-    <!--    </div>-->
-    <!--  </div>-->
-    <!--<div class="text-right">-->
-    <!--  <%#= link_to "全てのコンサート情報を見る＞",  public_concerts_path %>-->
-    <!--</div>-->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 offset-md-1 mt-5">
+          <h3 style="margin-left: -150px;">新着情報</h3>
+          <table class="table table-borderless float-right">
+            <tr>
+              <% @concerts.each do |concert| %>
+                <td>
+                  <%= link_to(image_tag(concert.get_image, size: '230x150', class: 'card-image-top'), public_concert_path(concert.id)) %></br>
+                  <%= link_to concert.name, public_concert_path(concert.id) %>
+                </td>
+              <% end %>
+            </tr>
+          </table>
+        </div>
+      </div>
+    <div class="text-right">
+      <%= link_to "全てのコンサート情報を見る＞",  public_concerts_path %>
+    </div>
    </div>
   </div>
 </div>
