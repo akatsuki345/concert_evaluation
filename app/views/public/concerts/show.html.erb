@@ -51,7 +51,7 @@
           <input id="star1" type="radio" name="revue[star]" value="1" />
           <label for="star1">★</label>
         </div>
-        <%= f.submit "送信する" %>
+        <%= f.submit "送信する", disabled: !current_customer %>
       <% end %>
     </div>
     <div class="col-12">

@@ -35,6 +35,7 @@ class Admin::ConcertsController < ApplicationController
 
   def update
   # byebug
+         @customers = Customer.where(is_deleted: false)
          @concert = Concert.find(params[:id])
       if @concert.update(admin_params)
          @concert.save_tags(params[:tag].values[0])
