@@ -8,7 +8,7 @@
 
 Admin.create(
   email: 'admin@admin',
-  password: 'potoforio',
+  password: 'summer',
   )
 
 categories = ['J-POP', 'コンサート', 'ジャズ', 'クラシック']
