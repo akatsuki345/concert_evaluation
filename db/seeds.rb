@@ -8,10 +8,11 @@
 
 Admin.create(
   email: 'admin@admin',
-  password: 'summer',
+  password: 'potoforio',
   )
 
 categories = ['J-POP', 'コンサート', 'ジャズ', 'クラシック']
 categories.each do |category|
   Category.find_or_create_by(name: category)
 end
+
