@@ -25,7 +25,7 @@
         <td class="align-middle py-1"><%= cart.concert.add_tax_price.to_s(:delimited) %>円</td>
         <td class="align-middle py-1">
           <div class="form-group mt-3">
-            <%= render 'public/tmp/sheet', cart:cart, concert:cart %>
+            <%= render 'public/tmp/sheet', cart:cart, concert:cart.concert %>
           </div>
         </td>
         <td class="align-middle py-1">
