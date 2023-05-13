@@ -11,9 +11,6 @@
     <tbody>
       <% @concerts.each do |concert| %>
         <tr>
-          <%#= link_to public_customer_path(concert.customer) do %>
-          <%#= image_tag concert.customer.get_profile_image, size:'50x50' %>
-          <%# end %>
           <td><%= link_to concert.name, public_concert_path(concert.id), class: "card-title mb-2" %></td>
           <td><%= concert.introduction %></td>
         </tr>
