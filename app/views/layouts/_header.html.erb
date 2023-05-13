@@ -9,19 +9,29 @@
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
           <li class="mr-3">
-            <%= link_to "マイページ", public_customer_path(current_customer), class: 'nav-link text-white font-weight-bold' %>
+            <%= link_to public_customer_path(current_customer), class: 'nav-link text-white font-weight-bold' do %>
+              <i class="fa fa-user"></i><span class="ml-1">mypage</span>
+            <% end %>
           </li>
           <li class="mr-3">
-            <%= link_to "Aboutページ", public_about_path,class: 'nav-link text-white font-weight-bold' %>
+            <%= link_to public_about_path,class: 'nav-link text-white font-weight-bold' do %>
+             <i class="fas fa-link"></i><span class="ml-1">Aboutページ</span>
+            <% end %>
           </li>
           <li class="mr-3">
-            <%= link_to "コンサート一覧", public_concerts_path,class: 'nav-link text-white font-weight-bold' %>
+            <%= link_to public_concerts_path,class: 'nav-link text-white font-weight-bold' do %>
+             <i class="fa fa-music"></i><span class="ml-1">コンサート一覧</span>
+            <% end %>
           </li>
           <li class="mr-3">
-            <%= link_to "カート", public_cart_items_path,class: 'nav-link text-white font-weight-bold' %>
+            <%= link_to public_cart_items_path,class: 'nav-link text-white font-weight-bold' do %>
+             <i class="fa fa-cart-plus"></i><span class="ml-1">カート</span>
+            <% end %>
           </li>
           <li class="mr-3">
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'nav-link text-white font-weight-bold' %>
+            <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-white font-weight-bold' do %>
+             <i class="fas fa-sign-out-alt"></i><span class="ml-1">ログアウト</span>
+             <% end %>
           </li>
 
         <% elsif admin_signed_in? %>
@@ -45,16 +55,24 @@
           <%= link_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, class: "nav-link text-white font-weight-bold", method: :post %>
           </li>
           <li class="mr-3">
-            <%= link_to "コンサート一覧", public_concerts_path,class: 'nav-link text-white font-weight-bold' %>
+            <%= link_to public_concerts_path,class: 'nav-link text-white font-weight-bold' do %>
+             <i class="fa fa-music"></i><span class="ml-1">コンサート一覧</span>
+            <% end %>
           </li>
           <li class="mr-3">
-            <%= link_to "Aboutページ", public_about_path,class: 'nav-link text-white font-weight-bold' %>
+            <%= link_to public_about_path,class: 'nav-link text-white font-weight-bold' do %>
+             <i class="fas fa-link"></i><span class="ml-1">Aboutページ</span>
+            <% end %>
           </li>
           <li class="mr-3">
-            <%= link_to "新規登録", new_customer_registration_path,class: 'nav-link text-white font-weight-bold' %>
+            <%= link_to new_customer_registration_path,class: 'nav-link text-white font-weight-bold' do %>
+             <i class="fas fa-user-plus"></i><span class="ml-1">新規登録</span>
+            <% end %>
           </li>
           <li class="mr-3">
-            <%= link_to "ログイン", new_customer_session_path,class: 'nav-link text-white font-weight-bold' %>
+            <%= link_to new_customer_session_path,class: 'nav-link text-white font-weight-bold' do %>
+             <i class="fas fa-sign-in-alt"></i><span class="ml-1">ログイン</span>
+            <% end %>
           </li>
         <% end %>
         </ul>

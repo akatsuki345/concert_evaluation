@@ -1,20 +1,22 @@
 <div class="container px-5 px-sm-0">
  <div class="row">
   <div class="col-lg-6 col-md-8">
-      <%= form_with url: public_concerts_path, method: :get, class: "form-inline" do |f| %>
-        <div class="input-group">
-          <%= f.text_field :tag_name, class: "form-control", placeholder: "タグ名を入力してください" %>
-          <div class="input-group-append">
-            <%= f.submit "検索", class: "btn btn-primary" %>
-          </div>
-        </div>
-      <% end %>
+
     </div>
   </div>
 </div>
 <div class="container px-5 px-sm-0">
  <div class="row">
-  <div class="col-sm-2 mt-5">
+  <div class="col-sm-3 mt-5">
+    <h5 class="border-bottom p-1 text-center border-dark">タグ検索</h5>
+    <%= form_with url: public_concerts_path, method: :get, class: "form-inline mb-4 mt-3" do |f| %>
+      <div class="input-group">
+        <%= f.text_field :tag_name, class: "form-control", placeholder: "タグ名を入力してください" %>
+        <div class="input-group-append">
+          <%= f.submit "検索", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
    <%= render 'public/tmp/category_list', categories: @categories %>
   </div>
     <div class="col-md-9 mx-auto mt-5 pl-5">
