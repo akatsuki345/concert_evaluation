@@ -15,7 +15,6 @@
         <tbody>
          <% @concert.revues.each do |revue| %>
            <tr>
-          <%#= image_tag comment.customer.get_profile_image(100,100) %>
              <td><%= revue.customer.first_name+revue.customer.last_name %></td>
              <td><%= revue.created_at.strftime('%Y/%m/%d') %></td>
              <td><%= revue.impressions %></td>

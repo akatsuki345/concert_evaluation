@@ -1,7 +1,6 @@
 <div class="container my-5">
   <div class="row">
     <div class="col-md-10 col-sm-12 mx-6 mx-sm-auto px-auto">
-      <!--<div class="row d-flex justify-content-center mb-4">-->
 
         <h3 class="mb-5 col-8 d-flex justify-content-center"><span>コンサート編集</span></h3>
 
@@ -24,16 +23,6 @@
               <dt class="col-4 mt-3"><label for="ice-cream-choice">開催者</label></dt>
 
               <dd class="col-8 mt-3"><%= f.collection_select(:customer_id, @customers, :id, :nickname) %></dd>
-              <!--<dd class="col-8 mt-3"><input list="customers" id="customer-choice" name="concert[customer_name]">-->
-              <!--<datalist id="customers">-->
-              <!--  <%# Customer.all.each do |c| %>-->
-              <!--    <option value="<%#= c.nickname %>">-->
-              <!--  <%# end %>-->
-              <!--</datalist>-->
-              <!--</dd>-->
-
-                <!--<dt class="col-4 mt-3"><#%= f.label :name, "アーティスト名", class: "text-right" %></dt>-->
-                <!--<dd class="col-8 mt-3"><%#= f.text_field :name, class: "form-control name", placeholder: "アーティスト名" %></dd>-->
 
                 <dt class="col-4 mt-3"><%= f.label :name, "コンサート名", class: "text-right" %></dt>
                 <dd class="col-8 mt-3"><%= f.text_field :name, class: "form-control name", placeholder: "コンサート名" %></dd>

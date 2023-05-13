@@ -1,16 +1,5 @@
 class Public::RevuesController < ApplicationController
 
-  # def index
-  #   @revues = Revue.all.page(params[:page]).per(10)
-  #   @revue = Revue.new
-  #   # @concert = Concert.find(params[:concert_id])
-  #   # @revue = Revue.new(revue_params)
-  #   # @revue.customer_id = current_customer.id
-  #   # @revue.concert_id = concert.id
-  #   # @revue.save
-  #   # redirect_to public_concert_path(concert)
-  # end
-
   def edit
     @revue = Revue.find(params[:id])
     if @revue.customer_id == current_user.id

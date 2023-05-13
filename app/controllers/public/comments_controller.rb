@@ -14,7 +14,6 @@ class Public::CommentsController < ApplicationController
     comment.revue_id = @revue.id
     comment.concert_id = concert.id
     comment.save
-    #redirect_to public_concert_comments_path(concert_id: concert.id, revue_id: revue.id)
   end
 
   def update

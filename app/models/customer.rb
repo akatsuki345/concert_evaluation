@@ -22,7 +22,6 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :telephone_number, presence: true
   validates :email, presence: true
-  #validates :encrypted_password, presence: true
 
   def add_full_name
     "#{self.first_name} #{self.last_name}"
@@ -42,7 +41,6 @@ class Customer < ApplicationRecord
       category_id: "1"
     ) do |customer|
       customer.password = SecureRandom.urlsafe_base64
-      #customer.name = "guestuser"
     end
   end
 

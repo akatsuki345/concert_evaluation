@@ -15,7 +15,6 @@
         <tbody>
          <% @concert.comments.each do |comment| %>
            <tr>
-          <%#= image_tag comment.customer.get_profile_image(100,100) %>
              <td><%= comment.customer.nickname %></td>
              <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
              <td><%= comment.comment %></td>

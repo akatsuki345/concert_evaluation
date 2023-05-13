@@ -4,7 +4,6 @@ class Admin::TagsController < ApplicationController
   end
 
   def show
-    # @tag = Tag.find(id: params[:id])
     @tag = Tag.find_by(id: params[:id])
     redirect_to admin_tags_path unless @tag
   end
