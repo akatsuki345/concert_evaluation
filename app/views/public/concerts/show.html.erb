@@ -3,10 +3,11 @@
     <div class="col-sm-2">
       <%= render 'public/tmp/category_list', categories: @categories %>
     </div>
-    <div class="col-md-8" style="margin-top: 50px;">
-     <div class="d-flex">
-      <%= image_tag @concert.get_image, size: '300x200', class: "mr-4" %>
-      <div>
+    <div class="col-md-9 mx-auto mt-5 pl-5">
+      <div class="d-flex align-items-end mb-5" style="place-content: center;">
+        <div class="d-flex">
+          <%= image_tag @concert.get_image, size: '300x200', class: "mr-4" %>
+      <div style="margin-left: 28px">
        <h3 class="font-weight-bold mb-3"><%= @concert.name %></h3>
         <p class="h5 mb-4">アーティスト名 : <%= @concert.customer.nickname %></p>
         <p class="h5 mb-4"><%= @concert.introduction %></p>
@@ -31,6 +32,7 @@
           </div>
         <% end %>
       </div>
+       </div>
      </div>
     </div>
 <div class="container my-5">
