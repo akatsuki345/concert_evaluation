@@ -71,9 +71,10 @@ class Concert < ApplicationRecord
 
     # tagsテーブルから(2)のタグを探して、tag_mapsテーブルにtag_idを追加する
     new_tags.each do |new|
+      striped_new = new.gsub(/(^[[:space:]]+)|([[:space:]]+$)/, '')
       # 条件のレコードを初めの1件を取得し1件もなければ作成する
       # find_or_create_by : https://railsdoc.com/page/find_or_create_by
-      new_concert_tag = Tag.find_or_create_by(name: new)
+      new_concert_tag = Tag.find_or_create_by(name: striped_new)
       # tag_mapsテーブルにpost_idとtag_idを保存
       #   配列追加のようにレコードを渡すことで新規レコード作成が可能
       self.tags << new_concert_tag

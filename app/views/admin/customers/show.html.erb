@@ -64,7 +64,9 @@
    <tr>
     <td></td>
     <td><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: 'btn btn-success' %></td>
-    <td><%= link_to "注文履歴一覧を見る", admin_order_path, class: 'btn btn-primary' %></td>
+    <% if @customer.orders.count > 0 %>
+      <td><%= link_to "注文履歴一覧を見る", admin_customer_customer_orders_path(@customer.id), class: 'btn btn-primary' %></td>
+    <% end %>
    </tr>
    </table>
   </div>

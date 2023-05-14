@@ -8,7 +8,7 @@ class Public::ConcertsController < ApplicationController
       @title = params[:category_name]
       @add_concerts_title = @concerts.first.name if @concerts.present?
     elsif params[:tag_name].present?
-      @concerts = Concert.status_public.joins(:tags).where("tags.name LIKE ?", "%#{params[:tag_name]}%").page(params[:page]).per(8)
+      @concerts = Concert.status_public.joins(:tags).where("tags.name LIKE ?", "%#{params[:tag_name]}%").distinct.page(params[:page]).per(8)
     else
       @concerts = Concert.status_public.page(params[:page]).per(8)
     end

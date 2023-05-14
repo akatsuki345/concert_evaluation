@@ -10,7 +10,9 @@ Rails.application.routes.draw do
       resources :comments, only: [:index, :show, :destroy]
     end
 
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update] do
+      resources :customer_orders, only: [:index, :show]
+    end
     resources :categories, only: [:index, :create, :edit, :update]
   end
 
