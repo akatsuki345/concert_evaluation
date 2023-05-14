@@ -1,13 +1,14 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-body {
+.background {
   background-image: url('../images/moon-7102510_1920.jpg');
   background-size: cover;
   background-repeat: repeat-y;
+  height: 100vh;
+  opacity: 0.1;
 }
 
-.background {
-  background-color: rgba(255, 255, 255, 0.5);
-  height: 100vh;
+.background-wrapper {
+  background-color: rgba(255,255,255,0.5);
 }

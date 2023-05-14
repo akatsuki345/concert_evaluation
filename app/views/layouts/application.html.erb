@@ -12,14 +12,16 @@
     <script src="https://kit.fontawesome.com/4f3d4442e3.js" crossorigin="anonymous"></script>
   </head>
 
-  <body background="/img/moon-7102510_1920.jpg">
+  <body>
     <div class="background">
-    <%= render 'layouts/header' %>
-      <main>
-       <p id="notice"><%= notice %></p>
-      </main>
-    <%= yield %>
-    <%= render 'layouts/footer' %>
+      <div class="background-wrapper">
+        <%= render 'layouts/header' %>
+          <main>
+           <p id="notice"><%= notice %></p>
+          </main>
+        <%= yield %>
+        <%= render 'layouts/footer' %>
+      </div>
     </div>
   </body>
 </html>
