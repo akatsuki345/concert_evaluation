@@ -1,4 +1,5 @@
 class Admin::CommentsController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @comment = Comment.page(params[:page])
     @concert = Concert.find(params[:concert_id])
