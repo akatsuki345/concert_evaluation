@@ -1,4 +1,5 @@
 class Admin::RevuesController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @revue = Revue.page(params[:page])
     @concert = Concert.find(params[:concert_id])
