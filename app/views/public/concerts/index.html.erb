@@ -1,10 +1,4 @@
-<div class="container px-5 px-sm-0">
- <div class="row">
-  <div class="col-lg-6 col-md-8">
 
-    </div>
-  </div>
-</div>
 <div class="container px-5 px-sm-0">
  <div class="row">
   <div class="col-sm-3 mt-5">
@@ -19,29 +13,30 @@
     <% end %>
    <%= render 'public/tmp/category_list', categories: @categories %>
   </div>
-    <div class="col-md-9 mx-auto mt-5 pl-5">
+    <div class="col-sm-9 mx-auto mt-5 pl-5">
       <div class="d-flex align-items-end mb-5">
         <h2 class="mr-3">行事一覧</h2>
         <p>全<%= @concerts.count %>件</p>
       </div>
-      <% @concerts.each do |concert| %>
-        <%= link_to public_concert_path(concert.id) do %>
-          <div class="d-flex">
-            <%= image_tag concert.get_image, size: '230x160', class: "card-image-top mr-2" %>
-            <div style="margin-left: 28px">
-              <p style="font-size: 24px;"><%= link_to concert.name, public_concert_path(concert.id), class: "card-title mb-2" %></p>
-              <p style="font-size: 18px;">アーティスト名: <%= concert.customer.nickname %></p>
-              <p style="font-size: 18px;">税込<%= concert.add_tax_price.to_s(:delimited) %>円</p>
-            </div>
+
+        <% @concerts.each do |concert| %>
+          <div class="row">
+            <%= link_to public_concert_path(concert.id) do %>
+              <div class="col-sm-4">
+                <%= image_tag concert.get_image, size: '230x160', class: "card-image-top mr-2" %>
+              </div>
+              <div class="col-sm-8">
+                <div style="margin-left: 28px">
+                  <p style="font-size: 24px;"><%= link_to concert.name, public_concert_path(concert.id), class: "card-title mb-2" %></p>
+                  <p style="font-size: 18px;">アーティスト名: <%= concert.customer.nickname %></p>
+                  <p style="font-size: 18px;">税込<%= concert.add_tax_price.to_s(:delimited) %>円</p>
+                </div>
+              </div>
+            <% end %>
           </div>
-          <% unless concert.is_active %>
-            <div class="not-sale">
-              <p>受付終了</p>
-            </div>
-          <% end %>
+          <hr>
         <% end %>
-        <hr>
-      <% end %>
+
       <div id="paginate-wrapper" class="text-center">
         <%= paginate @concerts %>
       </div>

@@ -3,44 +3,46 @@
     <div class="col-sm-2">
       <%= render 'public/tmp/category_list', categories: @categories %>
     </div>
-    <div class="col-md-9 mx-auto mt-5 pl-5">
-      <div class="d-flex align-items-end mb-5" style="place-content: center;">
-        <div class="d-flex">
-          <%= image_tag @concert.get_image, size: '300x200', class: "mr-4" %>
-      <div style="margin-left: 28px">
-       <h3 class="font-weight-bold mb-3"><%= @concert.name %></h3>
-        <p class="h5 mb-4">アーティスト名 : <%= @concert.customer.nickname %></p>
-        <p class="h5 mb-4"><%= @concert.introduction %></p>
-         <div class="tag-list mb-4">
-          <% @concert.tags.each do |tag| %>
-           <%= link_to tag.name, public_concerts_path(tag_name: tag.name), class: "btn btn-outline-secondary mr-2 mb-2" %>
-          <% end %>
-         </div>
-        <p class="h4 mb-4">
-          <%= @concert.add_tax_price.to_s(:delimited) %>（<%= @concert.price.to_s(:delimited) %>）円
-          <small>(税込)</small>
-        </p>
-        <% if @concert.is_active %>
-          <% if current_customer %>
-            <div class="text-right">
-              <%= render 'public/tmp/sheet', cart:@cart, concert:@concert %>
+    <div class="col-sm-9 mx-auto mt-5">
+      <div class="row">
+        <div class="col-sm-5">
+          <%= image_tag @concert.get_image, class: "img-fluid mr-4" %>
+        </div>
+        <div class="col-sm-7">
+          <h3 class="font-weight-bold my-3"><%= @concert.name %></h3>
+          <p class="h5 mb-4">アーティスト名 : <%= @concert.customer.nickname %></p>
+          <p class="h5 mb-4"><%= @concert.introduction %></p>
+          <div class="tag-list mb-4">
+            <% @concert.tags.each do |tag| %>
+             <%= link_to tag.name, public_concerts_path(tag_name: tag.name), class: "btn btn-outline-secondary mr-2 mb-2" %>
+            <% end %>
+          </div>
+          <p class="h4 mb-4">
+            <%= @concert.add_tax_price.to_s(:delimited) %>（<%= @concert.price.to_s(:delimited) %>）円
+            <small>(税込)</small>
+          </p>
+          <% if @concert.is_active %>
+            <% if current_customer %>
+              <div>
+                <%= render 'public/tmp/sheet', cart:@cart, concert:@concert %>
+              </div>
+            <% end %>
+          <% else %>
+            <div>
+              <span class="btn btn-sm btn-secondary">受付終了</span>
             </div>
           <% end %>
-        <% else %>
-          <div class="text-right">
-            <span class="btn btn-sm btn-secondary">受付終了</span>
-          </div>
-        <% end %>
+        </div>
       </div>
-       </div>
-     </div>
     </div>
+  </div>
+</div>
 <div class="container my-5">
   <h3><span class="bg-light bg-gradient">レビュー</span></h3>
   <div class="row">
-    <div class="col-10">
+    <div class="col-sm-10">
       <%= form_with model: [@concert, @revue], url: public_concert_revues_path(@concert.id), method: :post do |f| %>
-        <%= f.text_area :impressions, rows: '5', placeholder: "レビューをここに" %>
+        <%= f.text_area :impressions, rows: '5', placeholder: "レビューをここに", class: "form-control" %>
         <div class="star-field">
           <input id="star5" type="radio" name="revue[star]" value="5" />
           <label for="star5">★</label>
