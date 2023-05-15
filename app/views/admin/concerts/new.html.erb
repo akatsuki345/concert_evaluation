@@ -39,6 +39,9 @@
                 <dt class="col-4 mt-3"><%= f.label :category_id, "カテゴリー", class: "text-right" %></dt>
                 <dd class="col-8 mt-3"><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "--選択してください--" %></dd>
 
+                <!--<dt class="col-4 mt-3"><%#= f.label :category_id, "開催日", class: "text-right" %></dt>-->
+                <!--<dd class="col-8 mt-3"><%#= f.datetime_field :sample_at %></dd>-->
+
                 <dt class="col-4 mt-3"><%= label :tag, 'タグ', class: "text-right" %></dt>
                 <dd class="col-8 mt-3"><%= text_field :tag, value: @concert.tags.pluck(:name) %><small class="text-muted">カンマで区切ることで複数指定できます。</small></dd>
 

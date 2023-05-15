@@ -30,6 +30,7 @@ class Concert < ApplicationRecord
  end
 
   def self.looks(search, word)
+    # @concert = Concert.where(word.map { |term| "name LIKE '%#{term}%'" }.join(' OR '))
     if search == "perfect_match"
       @concert = Concert.where("name LIKE?","#{word}")
     elsif search == "forward_match"
