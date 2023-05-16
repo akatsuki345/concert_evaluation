@@ -30,7 +30,7 @@
               </td>
               <td class='text-left'>
                  <% order.order_details.each do |order_detail| %>
-                    <%= order_detail.concert.name %>
+                    <%= order_detail.concert.name %><br/>
                  <% end %>
              </td>
               <td><%= order.total_payment.to_s(:delimited) %>円</td>

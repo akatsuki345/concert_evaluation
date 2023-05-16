@@ -1,21 +1,19 @@
 <div class='container'>
+  <h3 class='m-4'>注文履歴</h3>
   <div class='row'>
-    <h3 class='m-4'>注文履歴</h3>
-  </div>
-  <div class='row'>
-    <div class='col-7'>
+    <div class='col-md-6'>
       <h5 class='font-weight-bolder'>注文情報</h5>
       <table class='table table-bordered'>
         <tr>
-          <td class='table-secondary'>注文日</td>
+          <td width="30%" class='table-secondary'>注文日</td>
           <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
           <td class='table-secondary'>配送先</td>
           <td>
-              〒<%= @order.postal_code %>
-              <%= @order.address %>
-              <%= @order.name %>
+              〒<%= @order.postal_code %><br/>
+              <%= @order.address %><br/>
+              <%= @order.name %><br/>
            </td>
         </tr>
         <tr>
@@ -28,52 +26,58 @@
       </table>
     </div>
 
-    <div class='col-4 ml-1'>
-        <h5 class='font-weight-bolder'>注文詳細</h5>
-        <table class='table table-bordered'>
+    <div class='col-md-6'>
+      <h5 class='font-weight-bolder'>注文詳細</h5>
+      <table class='table table-bordered'>
         <tr>
-          <td class='table-secondary'>商品合計</td>
-          <td class='text-right'><%= @total.to_s(:delimited) %>円</td>
+          <td width="30%" class='table-secondary'>商品合計</td>
+          <td class='text-right'><span class="mr-5"><%= @total.to_s(:delimited) %>円</span></td>
         </tr>
         <tr>
             <td class='table-secondary'>送料</td>
-            <td class='text-right'><%= @order.shipping_cost.to_s(:delimited) %>円</td>
+            <td class='text-right'><span class="mr-5"><%= @order.shipping_cost.to_s(:delimited) %>円</span></td>
         </tr>
         <tr>
             <td class='table-secondary'>ご請求金額</td>
-            <td class='text-right'><%= @order.total_payment.to_s(:delimited) %>円</td>
+            <td class='text-right'><span class="mr-5"><%= @order.total_payment.to_s(:delimited) %>円</span></td>
         </tr>
         </table>
       </div>
-    </div>
+  </div>
 
-    <div class='row flex-column ml-1'>
-    <h5 class='font-weight-bolder'>注文チケット詳細</h5>
-    <table class='table table-bordered col-8 text-center'>
-      <thead class='table-secondary'>
+  <h5 class='font-weight-bolder'>注文チケット詳細</h5>
+  <table class='table table-bordered text-center'>
+    <thead class='table-secondary'>
+      <tr>
+        <th nowrap>コンサート名</th>
+        <th nowrap>単価(税込)</th>
+        <th nowrap>枚数</th>
+        <th nowrap>小計</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%  @order_details.each do |order_detail| %>
         <tr>
-          <th class='col-4'>コンサート名</th>
-          <th class='col-1'>単価(税込)</th>
-          <th class='col-1'>枚数</th>
-          <th class='col-1'>小計</th>
+          <td>
+            <%= image_tag order_detail.concert.get_image, size:'50x50'%><br class="sp_br">
+            <%= order_detail.concert.name %>
+          </td>
+          <td><%= order_detail.concert.add_tax_price.to_s(:delimited) %>円</td>
+          <td><%= order_detail.sheet %>個</td>
+          <td><%= order_detail.add_total_payment_all.to_s(:delimited) %>円</td>
         </tr>
-      </thead>
-      <tbody>
-        <%  @order_details.each do |order_detail| %>
-        <tr>
-            <td>
-                <%= image_tag order_detail.concert.get_image, size:'50x50'%>
-                <%= order_detail.concert.name %>
-            </td>
-            <td>
-                <%= order_detail.concert.add_tax_price.to_s(:delimited) %>円</td>
-            <td>
-                <%= order_detail.sheet %>個</td>
-            <td>
-                <%= order_detail.add_total_payment_all.to_s(:delimited) %>円</td>
-        </tr>
-        <% end %>
-    　</tbody>
-　　</table>
-　　</div>
+      <% end %>
+  　</tbody>
+　</table>
 </div>
+
+<style>
+  .sp_br {
+    display: none;
+  }
+  @media screen and (max-width: 768px) {
+    .sp_br {
+      display: block;
+    }
+  }
+</style>
