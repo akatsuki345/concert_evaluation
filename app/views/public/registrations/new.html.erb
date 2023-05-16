@@ -4,15 +4,16 @@
     <h2>新規会員登録</h2>
     <%= form_with model: @customer, url: customer_registration_path do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
-    <table>
+    <table class="text-left ml-2">
       <tr>
         <td>
         <p><%= f.label "名前" %></p>
         </td>
         <td>
-        <p>
-          (姓)<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name",placeholder: "田中" %>
-          (名)<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name",placeholder: "太郎" %></p>
+          <div class="row">
+            <div class="col-sm-12 col-lg-6"><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name",placeholder: "田中(姓)" %></div>
+            <div class="col-sm-12 col-lg-6"><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name",placeholder: "太郎(名)" %></div>
+          </div>
         </td>
         </tr>
 
@@ -21,8 +22,10 @@
             <p><%= f.label "フリガナ" %></p>
           </td>
           <td>
-            <p>(セイ)<%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana",placeholder: "タナカ" %>
-            　(メイ)<%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana",placeholder: "タロウ" %></p>
+            <div class="row">
+              <div class="col-sm-12 col-lg-6"><%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana",placeholder: "タナカ(セイ)" %></div>
+              <div class="col-sm-12 col-lg-6"><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana",placeholder: "タロウ(メイ)" %></div>
+              </div>
           </td>
         </tr>
 

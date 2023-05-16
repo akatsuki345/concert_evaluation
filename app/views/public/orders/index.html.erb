@@ -4,16 +4,17 @@
   </div>
 
   <div class='row'>
+    <% if @orders.present? %>
+   <div class='table-responsive'>
     <table class='table table-bordered'>
-        <% if @orders.present? %>
       <thead class='table-secondary text-center'>
           <tr>
-              <th class='col-1'>注文日</th>
-              <th class='col-3'>配送先</th>
-              <th class='col-2'>注文商品</th>
-              <th class='col-1'>支払い金額</th>
-              <th class='col-1'>ステータス</th>
-              <th class='col-1'>注文詳細</th>
+              <th nowrap>注文日</th>
+              <th nowrap>配送先</th>
+              <th nowrap>注文商品</th>
+              <th nowrap>支払い金額</th>
+              <th nowrap>ステータス</th>
+              <th nowrap>注文詳細</th>
          </tr>
      </thead>
     <tbody>
@@ -22,10 +23,10 @@
               <td>
                 <%= order.created_at.strftime('%Y/%m/%d') %>
               </td>
-              <td class='text-left'>
-                〒<%= order.postal_code %>
-                 <%= order.address %>
-                 <%= order.name %>
+              <td nowrap class='text-left'>
+                〒<%= order.postal_code %><br/>
+                 <%= order.address %><br/>
+                 <%= order.name %><br/>
               </td>
               <td class='text-left'>
                  <% order.order_details.each do |order_detail| %>
@@ -34,12 +35,13 @@
              </td>
               <td><%= order.total_payment.to_s(:delimited) %>円</td>
               <td><%= order.status_i18n %></td>
-              <td><%= link_to '表示する', public_order_path(order.id),class:'btn btn-info' %></td>
+              <td nowrap><%= link_to '表示する', public_order_path(order.id),class:'btn btn-info' %></td>
          </tr>
         <% end %>
 
     </tbody>
   </table>
+  </div>
      <% else %>
         <h2>ご注文は存在しません</h2>
      <% end %>

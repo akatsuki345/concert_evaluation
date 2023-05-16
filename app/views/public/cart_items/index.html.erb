@@ -4,13 +4,14 @@
     <%= link_to 'カートを空にする', public_destroy_all_path, method: :delete,
     "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger h-75" %>
   </div>
+  <div class="table-responsive">
   <table class="table table-bordered table-hover mt-3">
     <thead class="thead-dark">
       <tr>
-        <th>チケット名</th>
-        <th>単価(税込)</th>
-        <th>数量</th>
-        <th>小計</th>
+        <th nowrap>チケット名</th>
+        <th nowrap>単価(税込)</th>
+        <th nowrap>数量</th>
+        <th nowrap>小計</th>
         <th></th>
       </tr>
     </thead>
@@ -31,7 +32,7 @@
         <td class="align-middle py-1">
           <%= cart.add_total_payment_all.to_s(:delimited) %>円
         </td>
-        <td class="align-middle py-1">
+        <td nowrap class="align-middle py-1">
           <%= link_to '消去する', public_cart_item_path(cart.id), method: :delete,
           "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %>
         </td>
@@ -44,13 +45,14 @@
     <% end %>
     </tbody>
   </table>
+  </div>
   <div class="d-flex justify-content-between align-items-center">
     <%= link_to '買い物を続ける', root_path, class:"btn btn-sm btn-primary h-75" %>
     <table class="w-25 table-bordered">
       <thead>
         <tr>
-          <th class="table-active py-3 w-50 text-center">合計金額</th>
-          <th class="text-center"><%= @total.to_s(:delimited) %>円</th>
+          <th nowrap class="table-active py-3 w-50 text-center">合計金額</th>
+          <th nowrap class="text-center"><%= @total.to_s(:delimited) %>円</th>
         </tr>
       </thea>
     </table>

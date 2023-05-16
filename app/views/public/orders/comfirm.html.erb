@@ -4,14 +4,14 @@
   </div>
 
     <div class='row'>
-        <div class='col-8'>
+        <div class='col-md-8'>
             <table class='table table-bordered'>
                 <thead class='table-secondary'>
                     <tr>
-                        <th class='col-4'>コンサート名</th>
-                        <th class='col-1 text-center'>単価(税込)</th>
-                        <th class='col-1 text-center'>枚数</th>
-                        <th class='col-1 text-center'>小計</th>
+                        <th nowrap>コンサート名</th>
+                        <th nowrap class='text-center'>単価(税込)</th>
+                        <th nowrap class='col-1 text-center'>枚数</th>
+                        <th nowrap class='col-1 text-center'>小計</th>
                      </tr>
                 </thead>
                 <tbody>
@@ -30,18 +30,18 @@
               </table>
             </div>
 
-        <div class='col-3'>
+        <div class='col-md-3'>
             <table class='table table-bordered'>
                 <tr>
-                    <td class='table-secondary'>送料</td>
+                    <td nowrap class='table-secondary'>送料</td>
                     <td class='text-right'><%= @order.shipping_cost.to_s(:delimited) %>円</td>
                 </tr>
                 <tr>
-                    <td class='table-secondary'>商品合計</td>
+                    <td nowrap class='table-secondary'>商品合計</td>
                     <td class='text-right'><%= @total.to_s(:delimited) %>円</td>
                 </tr>
                 <tr>
-                    <td class='table-secondary'>請求金額</td>
+                    <td nowrap class='table-secondary'>請求金額</td>
                     <td class='text-right'><%= (@order.shipping_cost + @total).to_s(:delimited) %>円</td>
                 </tr>
             </table>
@@ -49,14 +49,14 @@
     </div>
 
     <diV class='row ml-4 my-2'>
-        <h5 class='col-2 font-weight-bolder'>支払い方法</h5>
-           　<%= @order.payment_method_i18n %>
+        <h5 class='col-md-2 font-weight-bolder'>支払い方法</h5>
+        <%= @order.payment_method_i18n %>
     </div>
 
     <div class='row ml-4 mb-2'>
-    　  <h5 class='col-2 font-weight-bolder'>お届け先</h5>
-    　       〒<%= @order.add_full_address %><br/>
-            <%= @order.name %>
+        <h5 class='col-md-2 font-weight-bolder'>お届け先</h5>
+         〒<%= @order.add_full_address %><br/>
+           <%= @order.name %>
     </div>
 
     <div class='text-center mb-2'>
