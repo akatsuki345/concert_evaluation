@@ -73,16 +73,11 @@
                   <p><%= f.text_field :telephone_number %></p>
                  </td>
             </tr>
-
-            <tr>
-              <td>
-                 <p><%= f.submit "編集内容を保存", class: 'btn btn-success' %></p>
-              </td>
-              <td>
-                 <p><%= link_to "退会する", unsubscribe_public_customers_path %></p>
-              </td>
-            </tr>
-            </table>
+          </table>
+            <div class="submit-center ">
+             <p><%= f.submit "編集内容を保存", class: 'btn btn-success edit-bottom' %></p>
+             <p><%= link_to "退会する", unsubscribe_public_customers_path, class: 'text-bottom' %></p>
+            </div>
         <% end %>
     </div>
   </div>
