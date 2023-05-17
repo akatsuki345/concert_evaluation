@@ -2,29 +2,33 @@
   <div class="row no-gutters">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
       <h5 class="text-dark bg-light py-4 mb-0">会員の方はこちらからログイン</h5>
-
       <div class="form-body p-4">
         <div class="mx-auto text-center">
-
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="input-group mb-3">
-
-            <div class="input-group-prepend">
-              <p><%= f.label :email,"メールアドレス" %></p>
-              <p><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
+            <table class="text-left ml-2">
+              <tr>
+                <td>
+                  <p><%= f.label :email,"メールアドレス" %></p>
+                </td>
+                <td>
+                  <p><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p><%= f.label :password,"パスワード" %></p>
+                </td>
+                <td>
+                  <p><%= f.password_field :password, autocomplete: "current-password" %></p>
+                </td>
+              </tr>
+            </table>
+            <div>
+              <%= f.submit "ログイン", class:"btn btn-lg btn-block btn-info login-btn" %>
             </div>
-
-            <div class="input-group-prepend">
-              <p><%= f.label :password,"パスワード" %></p>
-              <p><%= f.password_field :password, autocomplete: "current-password" %></p>
-            </div>
-              <%= f.submit "ログイン", class:"btn btn-lg btn-block btn-info" %>
-            </div>
-
-          </div>
           <% end %>
           <div>
-          <p>会員登録がお済みでない方</p>
+            <p>会員登録がお済みでない方</p>
           <br>
           <%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。
           </div>
