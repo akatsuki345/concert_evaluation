@@ -4,66 +4,83 @@
         <h2>会員情報編集</h2>
 
         <%= form_with model: @customer, url: public_customer_path(current_customer), method: :patch do |f| %>
-
-        <table>
+        <table class="text-left ml-2">
             <tr>
-                <td>名前</td>
-                <td>
-                    <%= f.text_field :first_name %>
-                </td>
-                <td>
-                    <%= f.text_field :last_name %>
-                </td>
+              <td>
+                <p><%= f.label "名前" %></p>
+              </td>
+              <td>
+                <div class="row">
+                   <div class="col-sm-12 col-lg-6"><%= f.text_field :first_name %></div>
+                   <div class="col-sm-12 col-lg-6"><%= f.text_field :last_name %></div>
+                </div>
+              </td>
             </tr>
 
             <tr>
-                <td>フリガナ</td>
-                <td>
-                    <%= f.text_field :first_name_kana %>
-                </td>
-                <td>
-                    <%= f.text_field :last_name_kana %>
-                </td>
+              <td>
+                 <p><%= f.label "フリガナ" %></p>
+              </td>
+              <td>
+                <div class="row">
+                 <div class="col-sm-12 col-lg-6"><%= f.text_field :first_name_kana %></div>
+                 <div class="col-sm-12 col-lg-6"><%= f.text_field :last_name_kana %></div>
+                </div>
+              </td>
             </tr>
 
             <tr>
-                <td>ニックネーム</td>
+                <td>
+                  <p><%= f.label "ニックネーム" %></p>
+                </td>
                 <td>
                     <%= f.text_field :nickname %>
                 </td>
             </tr>
 
             <tr>
-                <td>メールアドレス</td>
                 <td>
-                    <%= f.text_field :email, autofocus: true, autocomplete: "email" %>
+                  <p><%= f.label "メールアドレス" %></p>
+                </td>
+                <td>
+                  <p><%= f.text_field :email, autofocus: true, autocomplete: "email" %></p>
                 </td>
             </tr>
 
             <tr>
-                <td>郵便番号(ハイフンなし)</td>
                 <td>
-                    <%= f.text_field :postal_code %>
+                  <p><%= f.label "郵便番号(ハイフンなし)" %></p>
+                </td>
+                <td>
+                  <p><%= f.text_field :postal_code %></p>
                 </td>
             </tr>
 
             <tr>
-                <td>住所</td>
                 <td>
-                    <%= f.text_field :address %>
+                  <p><%= f.label "住所" %></p>
+                </td>
+                <td>
+                  <p><%= f.text_field :address %></p>
                 </td>
             </tr>
 
             <tr>
-                <td>電話番号（ハイフンなし）</td>
                 <td>
-                    <%= f.text_field :telephone_number %>
+                  <p><%= f.label "電話番号(ハイフンなし)" %></p>
+                </td>
+                <td>
+                  <p><%= f.text_field :telephone_number %></p>
                  </td>
             </tr>
 
             <tr>
-              <td><%= f.submit "編集内容を保存", class: 'btn btn-success' %></td>
-              <td><%= link_to "退会する", unsubscribe_public_customers_path %></td>
+              <td>
+                 <p><%= f.submit "編集内容を保存", class: 'btn btn-success' %></p>
+              </td>
+              <td>
+                 <p><%= link_to "退会する", unsubscribe_public_customers_path %></p>
+              </td>
             </tr>
             </table>
         <% end %>
