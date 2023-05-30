@@ -49,7 +49,6 @@ class Concert < ApplicationRecord
     current_tags = self.tags.pluck(:name)
     old_tags = current_tags - tag_list
     new_tags = tag_list - current_tags
-    p current_tag
     old_tags.each do |old|
       self.tags.delete Tag.find_by(name: old)
     end
